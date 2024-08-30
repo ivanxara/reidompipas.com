@@ -10,8 +10,11 @@ import Wrapper from "@/components/layout/wrapper";
 import { Button } from "@/components/ui/button";
 import Heading1 from "@/components/ui/heading-1";
 import Footer from "@/components/layout/footer";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 export default function Home() {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
   return (
     <>
       {/* landing */}
@@ -31,21 +34,19 @@ export default function Home() {
         <Wrapper>
           {/* <h1 className="font-bellagia text-2xl">Restaurante</h1> */}
           <Image
-            className="h-[400px] w-full object-cover"
+            className="h-[450px] sm:h-[400px] w-full object-cover"
             src={ImageRestaurant}
             alt=""
-            style={{ objectPosition: "left -400px" }}
+            style={{ objectPosition: isDesktop ? "left -400px" : "" }}
           />
           <div className="mt-4 flex justify-between md:mt-8">
             <h2 className="font-inter text-secondary">
-              O restaurante Rei Dom Pipas é um espaço acolhedor, fundado há mais
-              de 20 anos e gerido por uma equipa de profissionais dedicados.
-              Oferece uma experiência gastronómica autêntica, com pratos da
-              comida tradicional portuguesa e uma vasta seleção de vinhos, tanto
-              nacionais como internacionais. A missão principal do restaurante é
-              proporcionar uma hospitalidade calorosa e criar momentos de
-              celebração, para que os clientes se sintam verdadeiramente em
-              casa.
+              O restaurante Rei Dom Pipas é um espaço acolhedor com mais de 20
+              anos de história, gerido por uma equipa dedicada. Oferece pratos
+              da comida tradicional portuguesa e uma vasta seleção de vinhos
+              nacionais e internacionais. O objetivo é proporcionar uma
+              hospitalidade calorosa e criar momentos de celebração, fazendo com
+              que os clientes se sintam em casa.
             </h2>
             {/* <h1 className="w-full text-right text-4xl font-extralight uppercase ">
             Oliveira de Azeméis
@@ -55,7 +56,7 @@ export default function Home() {
         {/* menu */}
         <Wrapper className="grid gap-y-8 sm:gap-x-12 md:grid-cols-2 lg:gap-x-28">
           <Image
-            className="h-[630px] w-full object-cover"
+            className="h-[450px] sm:h-[400px] md:h-[630px] w-full object-cover"
             src={ImageFood1}
             alt="pipasInside"
           />
