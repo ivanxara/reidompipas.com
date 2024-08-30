@@ -39,8 +39,14 @@ export default function Home() {
           />
           <div className="mt-4 flex justify-between md:mt-8">
             <h2 className="font-inter text-secondary">
-              El restaurant Disfrutar, obert des de desembre del 2014, neix
-              després danys de treball intens a elBulli, on Mateu Casañas.
+              O restaurante Rei Dom Pipas é um espaço acolhedor, fundado há mais
+              de 20 anos e gerido por uma equipa de profissionais dedicados.
+              Oferece uma experiência gastronómica autêntica, com pratos da
+              comida tradicional portuguesa e uma vasta seleção de vinhos, tanto
+              nacionais como internacionais. A missão principal do restaurante é
+              proporcionar uma hospitalidade calorosa e criar momentos de
+              celebração, para que os clientes se sintam verdadeiramente em
+              casa.
             </h2>
             {/* <h1 className="w-full text-right text-4xl font-extralight uppercase ">
             Oliveira de Azeméis
