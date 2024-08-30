@@ -37,7 +37,9 @@ export default function Home() {
             className="h-[450px] sm:h-[400px] w-full object-cover"
             src={ImageRestaurant}
             alt=""
-            style={{ objectPosition: isDesktop ? "left -400px" : "" }}
+            style={{
+              objectPosition: isDesktop ? "left -400px" : "-80px 0px",
+            }}
           />
           <div className="mt-4 flex justify-between md:mt-8">
             <h2 className="font-inter text-secondary">
