@@ -87,6 +87,7 @@ const Navbar: React.FC = () => {
               {["Inicio", "Menu", "Diarias", "Eventos"].map((name) => (
                 <Link
                   href={""}
+                  key={name}
                   className="flex items-center justify-between py-4 px-2 hover:bg-primary"
                 >
                   <span className="font-bellagia font-light text-4xl tracking-tighter uppercase">

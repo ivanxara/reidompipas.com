@@ -14,21 +14,11 @@ import Heading1 from "@/components/ui/heading-1";
 import Footer from "@/components/layout/footer";
 
 export default function Home() {
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-
-  const scrollRef = useRef(null);
   return (
     <>
       {/* landing */}
-      <section
-        ref={scrollRef}
-        className="relative flex h-[calc(90vh-128px)] w-full items-center justify-center"
-      >
-        <motion.div className="mb-32 flex flex-col items-center font-bellagia ">
+      <section className="relative flex h-[calc(90vh-128px)] w-full items-center justify-center">
+        <div className="mb-32 flex flex-col items-center font-bellagia ">
           {/* <Image src={Pipas} width={120} alt="rei dom pipas" /> */}
           <h1 className="text-md text-center font-light uppercase md:text-lg">
             Resturante
@@ -36,7 +26,7 @@ export default function Home() {
           <h1 className="text-center text-4xl font-light uppercase tracking-[-0.1rem] md:text-6xl">
             Rei Dom Pipas
           </h1>
-        </motion.div>
+        </div>
       </section>
       <section className="flex flex-col gap-20 md:gap-28">
         {/* about */}
@@ -50,7 +40,7 @@ export default function Home() {
           <div className="mt-4 flex justify-between md:mt-8">
             <h2 className="font-inter text-secondary">
               El restaurant Disfrutar, obert des de desembre del 2014, neix
-              després d'anys de treball intens a elBulli, on Mateu Casañas.
+              després danys de treball intens a elBulli, on Mateu Casañas.
             </h2>
             {/* <h1 className="w-full text-right text-4xl font-extralight uppercase ">
             Oliveira de Azeméis
@@ -62,7 +52,7 @@ export default function Home() {
           <Image
             className="h-[630px] w-full object-cover"
             src={pipasInside}
-            alt=""
+            alt="pipasInside"
           />
           <div className="flex flex-col">
             <div className="flex w-full items-center justify-between">
