@@ -1,113 +1,151 @@
+"use client";
+
+import { ArrowUpRight } from "lucide-react";
+import React, { useRef } from "react";
+import pipasRestaurant from "@/assets/img/pipasFront.png";
+import pipasInside from "@/assets/img/pipasInside1.png";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
+import Wrapper from "@/components/layout/wrapper";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import Heading1 from "@/components/ui/heading-1";
+import Footer from "@/components/layout/footer";
 
 export default function Home() {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+
+  const scrollRef = useRef(null);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
+    <>
+      {/* landing */}
+      <section
+        ref={scrollRef}
+        className="relative flex h-[calc(90vh-128px)] w-full items-center justify-center"
+      >
+        <motion.div className="mb-32 flex flex-col items-center font-bellagia ">
+          {/* <Image src={Pipas} width={120} alt="rei dom pipas" /> */}
+          <h1 className="text-md text-center font-light uppercase md:text-lg">
+            Resturante
+          </h1>
+          <h1 className="text-center text-4xl font-light uppercase tracking-[-0.1rem] md:text-6xl">
+            Rei Dom Pipas
+          </h1>
+        </motion.div>
+      </section>
+      <section className="flex flex-col gap-20 md:gap-28">
+        {/* about */}
+        <Wrapper>
+          {/* <h1 className="font-bellagia text-2xl">Restaurante</h1> */}
+          <Image
+            className="h-[400px] w-full object-cover"
+            src={pipasRestaurant}
+            alt=""
+          />
+          <div className="mt-4 flex justify-between md:mt-8">
+            <h2 className="font-inter text-secondary">
+              El restaurant Disfrutar, obert des de desembre del 2014, neix
+              després d'anys de treball intens a elBulli, on Mateu Casañas.
+            </h2>
+            {/* <h1 className="w-full text-right text-4xl font-extralight uppercase ">
+            Oliveira de Azeméis
+          </h1> */}
+          </div>
+        </Wrapper>
+        {/* menu */}
+        <Wrapper className="grid gap-y-8 sm:gap-x-12 md:grid-cols-2 lg:gap-x-28">
+          <Image
+            className="h-[630px] w-full object-cover"
+            src={pipasInside}
+            alt=""
+          />
+          <div className="flex flex-col">
+            <div className="flex w-full items-center justify-between">
+              <Heading1>MENU</Heading1>
+              <Button variant="capsule">
+                <Link href="/menu">Ver tudo</Link>
+              </Button>
+            </div>
+            <div className="mt-4 flex flex-col divide-y-2 divide-secondary/10 text-2xl md:mt-8">
+              {[
+                { name: "Rei dom pipas", price: "25 €" },
+                { name: "Bacalhão", price: "22.5 €" },
+                { name: "Peixos", price: "22.5 €" },
+                { name: "Peixos", price: "22.5 €" },
+              ].map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between py-4"
+                  >
+                    <span className="tracking-tight">{item.name}</span>
+                    <span className="font-light">{item.price}</span>
+                  </div>
+                );
+              })}
+              <div className="">
+                <Link
+                  href="/menu"
+                  className="flex pt-4 text-xs underline underline-offset-2"
+                >
+                  Ver menu completo
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Wrapper>
+        <Wrapper>
+          {/* <h1 className="font-bellagia text-2xl">Talk to'em</h1> */}
+          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3].map((x) => (
+              <div
+                key={x}
+                className="rounded-2x relative h-[580px] overflow-hidden bg-primary md:h-[630px]"
+              >
+                <div className="absolute h-full w-full bg-gradient-to-t from-secondary to-black/25 transition-all group-hover:h-full"></div>
+                <img
+                  className="h-full w-full object-cover"
+                  src="https://plus.unsplash.com/premium_photo-1673809798970-30c14cfd0ab6?q=80&w=2864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                />
+                <div className="absolute bottom-10 flex w-full items-end justify-between px-10">
+                  <div className="flex flex-col text-start text-primary">
+                    <h1 className="text-2xl font-semibold text-primary transition-all group-hover:text-3xl">
+                      Casamentos
+                    </h1>
+                    <h3 className="text-sm  transition-all group-hover:text-base text-primary-foreground">
+                      Segunda a sexta
+                    </h3>
+                  </div>
+                  <button className="grid aspect-square place-items-center rounded-full border border-primary-foreground p-3 transition-all group-hover:p-4">
+                    <ArrowUpRight
+                      strokeWidth={1}
+                      className="size-6 text-primary-foreground transition-all group-hover:rotate-45"
+                    />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Wrapper>
+        <Wrapper>
+          <div className="flex w-full flex-col items-center justify-center bg-primary px-20 py-40 font-bellagia text-2xl font-light uppercase italic text-primary-foreground sm:p-20 md:flex-row">
+            fazemos
+            <span className="pl-3.5 font-inter text-4xl font-bold  not-italic">
+              takeaway
             </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
+            <span className="pl-2">e</span>
+            <span className="pl-3.5 font-inter text-4xl font-bold  not-italic">
+              delivery
             </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          </div>
+        </Wrapper>
+      </section>
+      <Footer />
+    </>
   );
 }
