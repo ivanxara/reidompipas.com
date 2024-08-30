@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Pipas from "@/assets/img/pipasUpscaled.png";
+import Pipas from "@/assets/img/logo_pipas.png";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import "@/assets/styles/navbar.css";
 
-import pipas from "@/assets/img/pipasUpscaled.png";
+import pipas from "@/assets/img/logo_pipas.png";
 import Wrapper from "./wrapper";
 import { cn } from "@/lib/utils";
 import LogoInstagram from "../shared/logo-instagram";
@@ -15,6 +15,16 @@ import LogoFacebook from "../shared/logo-facebook";
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Toggle the 'no-scroll' class on the body element
+    document.body.classList.toggle("no-scroll", open);
+
+    // Cleanup on component unmount
+    return () => {
+      document.body.classList.remove("no-scroll");
+    };
+  }, [open]);
 
   return (
     <>
@@ -81,14 +91,25 @@ const Navbar: React.FC = () => {
           {/* items */}
           <Wrapper className="flex flex-col">
             <div className="flex flex-col items-center">
-              {["Inicio", "Menu", "Diarias", "Eventos"].map((name) => (
+              {[
+                { name: "Inicio", url: "/" },
+                { name: "Menu", url: "/menu" },
+                {
+                  name: "Diarias",
+                  url: "https://www.instagram.com/stories/cristiano",
+                  props: { target: "_blank" },
+                },
+                { name: "Eventos", url: "/eventos" },
+              ].map((item, index) => (
                 <Link
-                  href={""}
-                  key={name}
+                  key={index}
+                  href={item.url}
+                  onClick={() => setOpen(false)}
                   className="flex items-center justify-between py-4 px-2 hover:bg-primary"
+                  {...item.props}
                 >
                   <span className="font-bellagia font-light text-4xl tracking-tighter uppercase">
-                    {name}
+                    {item.name}
                   </span>
                 </Link>
               ))}

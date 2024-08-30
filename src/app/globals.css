@@ -68,6 +68,19 @@
   }
 }
 
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  padding-right: 14px;
+}
+
 .shadow-custom-1 {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+@media only screen and (max-width: 768px) {
+  .no-scroll {
+    padding-right: 0px;
+  }
 }

@@ -2,14 +2,11 @@
 
 import { ArrowUpRight } from "lucide-react";
 import React, { useRef } from "react";
-import pipasRestaurant from "@/assets/img/pipasFront.png";
-import pipasInside from "@/assets/img/pipasInside1.png";
-import pipasInside2 from "@/assets/img/pipas.jpeg";
+import ImageRestaurant from "@/assets/img/restaurant_inside1.png";
+import ImageFood1 from "@/assets/img/food_1.jpeg";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Wrapper from "@/components/layout/wrapper";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Heading1 from "@/components/ui/heading-1";
 import Footer from "@/components/layout/footer";
@@ -35,7 +32,7 @@ export default function Home() {
           {/* <h1 className="font-bellagia text-2xl">Restaurante</h1> */}
           <Image
             className="h-[400px] w-full object-cover"
-            src={pipasInside}
+            src={ImageRestaurant}
             alt=""
             style={{ objectPosition: "left -400px" }}
           />
@@ -59,9 +56,8 @@ export default function Home() {
         <Wrapper className="grid gap-y-8 sm:gap-x-12 md:grid-cols-2 lg:gap-x-28">
           <Image
             className="h-[630px] w-full object-cover"
-            src={pipasInside2}
+            src={ImageFood1}
             alt="pipasInside"
-            
           />
           <div className="flex flex-col">
             <div className="flex w-full items-center justify-between">
