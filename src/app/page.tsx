@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import React, { useRef } from "react";
 import pipasRestaurant from "@/assets/img/pipasFront.png";
 import pipasInside from "@/assets/img/pipasInside1.png";
+import pipasInside2 from "@/assets/img/pipas.jpeg";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
@@ -34,8 +35,9 @@ export default function Home() {
           {/* <h1 className="font-bellagia text-2xl">Restaurante</h1> */}
           <Image
             className="h-[400px] w-full object-cover"
-            src={pipasRestaurant}
+            src={pipasInside}
             alt=""
+            style={{ objectPosition: "left -400px" }}
           />
           <div className="mt-4 flex justify-between md:mt-8">
             <h2 className="font-inter text-secondary">
@@ -57,8 +59,9 @@ export default function Home() {
         <Wrapper className="grid gap-y-8 sm:gap-x-12 md:grid-cols-2 lg:gap-x-28">
           <Image
             className="h-[630px] w-full object-cover"
-            src={pipasInside}
+            src={pipasInside2}
             alt="pipasInside"
+            
           />
           <div className="flex flex-col">
             <div className="flex w-full items-center justify-between">

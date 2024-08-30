@@ -44,14 +44,11 @@ const Navbar: React.FC = () => {
             </div>
           </Link>
           {/* menu icon */}
-          <div className="relative group grid place-items-center">
-            <button
-              onClick={() => setOpen(!open)}
-              className={cn(
-                "rounded-full p-10 absolute group-hover:bg-primary opacity-0 hover:opacity-100 group active:scale-[80%] transition-all "
-              )}
-            ></button>
-            <button className="w-10 pointer-events-none">
+          <button
+            onClick={() => setOpen(!open)}
+            className="relative group grid place-items-center"
+          >
+            <div className="w-10 pointer-events-none">
               <div
                 className={`menu-icon group-active:scale-[80%] size-4 ${
                   open ? "active" : ""
@@ -70,17 +67,17 @@ const Navbar: React.FC = () => {
                   ></span>
                 </div>
               </div>
-            </button>
-          </div>
+            </div>
+          </button>
         </div>
       </Wrapper>
       {open && (
         <div className="fixed top-0 z-40 h-full shadow-2xl w-full bg-secondary flex items-center justify-center text-primary-foreground">
           {/* socials */}
-          <div className="absolute bottom-10 py-6 lg:py-10 gap-4 flex items-center">
+          {/* <div className="absolute bottom-10 py-6 lg:py-10 gap-4 flex items-center">
             <LogoInstagram />
             <LogoFacebook />
-          </div>
+          </div> */}
           {/* items */}
           <Wrapper className="flex flex-col">
             <div className="flex flex-col items-center">
