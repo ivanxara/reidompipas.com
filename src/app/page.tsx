@@ -6,6 +6,8 @@ import ImageRestaurant from "@/assets/img/restaurant_inside1.png";
 import ImageFood1 from "@/assets/img/food_1.jpeg";
 import ImageMenuExecutivo from "@/assets/img/menu_executivo.jpg";
 import ImageMenuBanquete from "@/assets/img/menu_banquete.jpg";
+import ImageUberEats from "@/assets/img/test/uber-eats.svg";
+import ImageGlovo from "@/assets/img/test/Glovo_logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 import Wrapper from "@/components/layout/wrapper";
@@ -14,6 +16,8 @@ import Heading1 from "@/components/ui/heading-1";
 import Footer from "@/components/layout/footer";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import Heading2 from "@/components/ui/heading-2";
+import LogoInstagram from "@/components/shared/logo-instagram";
+import LogoFacebook from "@/components/shared/logo-facebook";
 
 export default function Home() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -119,7 +123,7 @@ export default function Home() {
               key={index}
               className="rounded-2x relative h-[480px] w-full overflow-hidden bg-primary md:h-[630px]"
             >
-              <div className="absolute h-full w-full bg-gradient-to-t from-secondary to-black/50 transition-all group-hover:h-full"></div>
+              <div className="absolute h-full w-full bg-gradient-to-t from-secondary to-black/20 transition-all group-hover:h-full"></div>
               <Image
                 className="h-full w-full object-cover"
                 src={item.image}
@@ -139,15 +143,17 @@ export default function Home() {
           ))}
         </Wrapper>
         <Wrapper>
-          <div className="flex w-full flex-col items-center justify-center bg-primary px-20 py-40 font-bellagia text-2xl font-light uppercase italic text-primary-foreground sm:p-20 md:flex-row">
-            fazemos
-            <span className="pl-3.5 font-inter text-4xl font-bold  not-italic">
-              takeaway
-            </span>
-            <span className="pl-2">e</span>
-            <span className="pl-3.5 font-inter text-4xl font-bold  not-italic">
-              delivery
-            </span>
+          <div className="flex relative flex-col gap-4 bg-primary px-20 py-20 sm:p-20">
+            <div className="flex w-full flex-col items-center justify-center font-bellagia text-2xl font-light uppercase italic text-primary-foreground md:flex-row">
+              fazemos
+              <span className="pl-3.5 font-inter text-4xl font-bold  not-italic">
+                takeaway
+              </span>
+              <span className="pl-2">e</span>
+              <span className="pl-3.5 font-inter text-4xl font-bold  not-italic">
+                delivery
+              </span>
+            </div>
           </div>
         </Wrapper>
       </section>

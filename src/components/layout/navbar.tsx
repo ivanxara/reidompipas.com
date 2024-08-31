@@ -84,11 +84,6 @@ const Navbar: React.FC = () => {
       </Wrapper>
       {open && (
         <div className="fixed top-0 z-40 h-full shadow-2xl w-full bg-secondary flex items-center text-primary-foreground">
-          {/* socials */}
-          {/* <div className="absolute bottom-10 py-6 lg:py-10 gap-4 flex items-center">
-            <LogoInstagram />
-            <LogoFacebook />
-          </div> */}
           {/* items */}
           <Wrapper className="flex flex-col w-full">
             <div className="flex flex-col items-center w-full divide-y">

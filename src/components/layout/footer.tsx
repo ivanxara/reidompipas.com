@@ -58,6 +58,10 @@ export default function Footer({ className }: any) {
               </a>
               <a className=" underline underline-offset-2" href="">
                 +351 912 040 915
+                <span className="text-[10px]">
+                  {" "}
+                  (Chamada para rede móvel nacional)
+                </span>
               </a>
               <a className=" mt-2 underline underline-offset-2" href="">
                 reidompipas@hotmail.com
