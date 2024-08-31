@@ -1,8 +1,14 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 
-export default function Heading2({ children }: any) {
+export default function Heading2({ children, className }: any) {
   return (
-    <h2 className="text-2xl text-secondary-foreground tracking-tight">
+    <h2
+      className={cn(
+        "text-2xl text-secondary-foreground tracking-tight",
+        className
+      )}
+    >
       {children}
     </h2>
   );

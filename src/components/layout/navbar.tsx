@@ -12,6 +12,7 @@ import Wrapper from "./wrapper";
 import { cn } from "@/lib/utils";
 import LogoInstagram from "../shared/logo-instagram";
 import LogoFacebook from "../shared/logo-facebook";
+import Heading1 from "../ui/heading-1";
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -82,15 +83,15 @@ const Navbar: React.FC = () => {
         </div>
       </Wrapper>
       {open && (
-        <div className="fixed top-0 z-40 h-full shadow-2xl w-full bg-secondary flex items-center justify-center text-primary-foreground">
+        <div className="fixed top-0 z-40 h-full shadow-2xl w-full bg-secondary flex items-center text-primary-foreground">
           {/* socials */}
           {/* <div className="absolute bottom-10 py-6 lg:py-10 gap-4 flex items-center">
             <LogoInstagram />
             <LogoFacebook />
           </div> */}
           {/* items */}
-          <Wrapper className="flex flex-col">
-            <div className="flex flex-col items-center">
+          <Wrapper className="flex flex-col w-full">
+            <div className="flex flex-col items-center w-full divide-y">
               {[
                 { name: "Inicio", url: "/" },
                 { name: "Menu", url: "/menu" },
@@ -105,12 +106,12 @@ const Navbar: React.FC = () => {
                   key={index}
                   href={item.url}
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-between py-4 px-2 hover:bg-primary"
+                  className="flex items-center justify-between py-4 px-2 w-full hover:bg-primary text-center"
                   {...item.props}
                 >
-                  <span className="font-bellagia font-light text-4xl tracking-tighter uppercase">
+                  <Heading1 className="text-primary-foreground">
                     {item.name}
-                  </span>
+                  </Heading1>
                 </Link>
               ))}
             </div>

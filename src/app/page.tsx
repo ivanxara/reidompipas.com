@@ -4,6 +4,8 @@ import { ArrowUpRight } from "lucide-react";
 import React, { useRef } from "react";
 import ImageRestaurant from "@/assets/img/restaurant_inside1.png";
 import ImageFood1 from "@/assets/img/food_1.jpeg";
+import ImageMenuExecutivo from "@/assets/img/menu_executivo.jpg";
+import ImageMenuBanquete from "@/assets/img/menu_banquete.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import Wrapper from "@/components/layout/wrapper";
@@ -11,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import Heading1 from "@/components/ui/heading-1";
 import Footer from "@/components/layout/footer";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import Heading2 from "@/components/ui/heading-2";
 
 export default function Home() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -42,7 +45,7 @@ export default function Home() {
             }}
           />
           <div className="mt-4 flex justify-between md:mt-8">
-            <h2 className="font-inter text-secondary">
+            <h2 className="font-inter text-secondary text-justify">
               O restaurante Rei Dom Pipas é um espaço acolhedor com mais de 20
               anos de história, gerido por uma equipa dedicada. Oferece pratos
               da comida tradicional portuguesa e uma vasta seleção de vinhos
@@ -97,38 +100,43 @@ export default function Home() {
             </div>
           </div>
         </Wrapper>
-        <Wrapper>
-          {/* <h1 className="font-bellagia text-2xl">Talk to'em</h1> */}
-          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((x) => (
-              <div
-                key={x}
-                className="rounded-2x relative h-[580px] overflow-hidden bg-primary md:h-[630px]"
-              >
-                <div className="absolute h-full w-full bg-gradient-to-t from-secondary to-black/25 transition-all group-hover:h-full"></div>
-                <img
-                  className="h-full w-full object-cover"
-                  src="https://plus.unsplash.com/premium_photo-1673809798970-30c14cfd0ab6?q=80&w=2864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                />
-                <div className="absolute bottom-10 flex w-full items-end justify-between px-10">
-                  <div className="flex flex-col text-start text-primary">
-                    <h1 className="text-2xl font-semibold text-primary transition-all group-hover:text-3xl">
-                      Casamentos
-                    </h1>
-                    <h3 className="text-sm  transition-all group-hover:text-base text-primary-foreground">
-                      Segunda a sexta
-                    </h3>
-                  </div>
-                  <button className="grid aspect-square place-items-center rounded-full border border-primary-foreground p-3 transition-all group-hover:p-4">
-                    <ArrowUpRight
-                      strokeWidth={1}
-                      className="size-6 text-primary-foreground transition-all group-hover:rotate-45"
-                    />
-                  </button>
+        <Wrapper className="mt-8 grid gap-y-8 sm:gap-x-12 md:grid-cols-2 lg:gap-x-28">
+          {[
+            {
+              label: "Menu Executivo",
+              sublabel:
+                "Para aniversários, eventos corporativos e outras ocasiões especiais.",
+              image: ImageMenuExecutivo,
+            },
+            {
+              label: "Menu Banquete",
+              sublabel:
+                "Ideal para casamentos, batizados, comunhões e outras celebrações.",
+              image: ImageMenuBanquete,
+            },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="rounded-2x relative h-[480px] w-full overflow-hidden bg-primary md:h-[630px]"
+            >
+              <div className="absolute h-full w-full bg-gradient-to-t from-secondary to-black/50 transition-all group-hover:h-full"></div>
+              <Image
+                className="h-full w-full object-cover"
+                src={item.image}
+                alt=""
+              />
+              <div className="absolute bottom-8 px-8 sm:bottom-14 gap-8 flex flex-col w-full items-start sm:px-14">
+                <div className="flex flex-col text-start text-primary">
+                  <Heading1 className="text-primary text-2xl">
+                    {item.label}
+                  </Heading1>
+                  <Heading2 className="text-primary-foreground text-xl mt-2 text-pretty">
+                    {item.sublabel}
+                  </Heading2>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </Wrapper>
         <Wrapper>
           <div className="flex w-full flex-col items-center justify-center bg-primary px-20 py-40 font-bellagia text-2xl font-light uppercase italic text-primary-foreground sm:p-20 md:flex-row">
