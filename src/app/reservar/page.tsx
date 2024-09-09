@@ -189,10 +189,7 @@ const ReservationDetails = ({ onSubmit, reservation }: any) => {
               )}
             />
           </div>
-          <Button
-            type="submit"
-            className="w-full text-lg py-6 px-8 mx-auto rounded-full"
-          >
+          <Button type="submit" variant="capsuleBig" className="w-full">
             <span>Continuar</span>
             <ChevronRightIcon className="size-4 ml-2" />
           </Button>
@@ -346,12 +343,8 @@ const PersonalDetails = ({ setPage, onSubmit, reservation }: any) => {
 
             {/* Submit button */}
             <div className="flex flex-col items-center justify-center gap-2 mt-4">
-              <Button
-                type="submit"
-                className="w-[320px] text-lg py-6 px-8 rounded-full"
-              >
+              <Button type="submit" variant="capsuleBig">
                 <span>Reservar</span>
-                {/* <ChevronRightIcon className="size-4 ml-2" /> */}
               </Button>
               <FormDescription className="text-center text-xs">
                 Ao clicar em reservar, enviaremos a confirmação da sua reserva

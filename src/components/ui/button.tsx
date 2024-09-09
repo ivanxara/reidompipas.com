@@ -27,6 +27,8 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         capsule:
           "rounded-full border hover:bg-secondary hover:text-background transition-all border-secondary px-4 py-1.5 h-auto text-xs uppercase",
+        capsuleBig:
+          "w-fit px-10 py-8 flex rounded-full bg-primary hover:brightness-105 text-primary-foreground font-medium text-base",
       },
     },
     defaultVariants: {

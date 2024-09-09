@@ -18,25 +18,14 @@ import Heading2 from "@/components/ui/heading-2";
 import LogoInstagram from "@/components/shared/logo-instagram";
 import LogoFacebook from "@/components/shared/logo-facebook";
 import CardEvent from "@/components/shared/card-event";
+import FloatingBooking from "@/components/shared/floating-booking";
 
 export default function Home() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <>
-      <div className="fixed bottom-10 w-full z-20">
-        <Wrapper>
-          <Link href="/reservar">
-            <Button
-              variant="secondary"
-              className="shadow-2xl hover:bg-secondary-foreground hover:scale-105 text-primary-foreground w-fit mx-auto px-12 py-8 flex rounded-full"
-            >
-              <CalendarDaysIcon />
-              <h2 className="font-bold text-base ml-2">Reservar Mesa</h2>
-            </Button>
-          </Link>
-        </Wrapper>
-      </div>
+      <FloatingBooking />
       {/* landing */}
       <section className="relative flex h-[calc(90vh-128px)] w-full items-center justify-center">
         <div className="mb-32 flex flex-col items-center font-bellagia ">
