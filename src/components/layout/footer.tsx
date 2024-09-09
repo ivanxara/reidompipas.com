@@ -7,6 +7,7 @@ import React from "react";
 import Wrapper from "./wrapper";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { CONTACTS } from "@/utils/constants";
 
 export default function Footer({ className }: any) {
   return (
@@ -50,14 +51,14 @@ export default function Footer({ className }: any) {
             <div className="flex flex-col">
               <h2 className="mb-2 font-bold">Contactos</h2>
               <a className=" underline underline-offset-2" href="">
-                +351 256 386 200
+                {CONTACTS.PERSONAL}
                 <span className="text-[10px]">
                   {" "}
                   (Chamada para rede fixa nacional)
                 </span>
               </a>
               <a className=" underline underline-offset-2" href="">
-                +351 912 040 915
+                {CONTACTS.COMPANY}
                 <span className="text-[10px]">
                   {" "}
                   (Chamada para rede móvel nacional)

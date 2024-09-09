@@ -17,7 +17,7 @@ export default async function Page() {
   return (
     <div>
       {/* Client-side component for menu and scroll behavior */}
-      <ClientSideMenu />
+      {/* <ClientSideMenu /> */}
 
       <Wrapper>
         <Heading1 className="pb-10">Menu</Heading1>

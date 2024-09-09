@@ -1,15 +1,4 @@
-import {
-  Allura,
-  Inter,
-  Kalnia,
-  Noto_Serif,
-  Noto_Serif_Devanagari,
-  Noto_Serif_Display,
-  Noto_Serif_Telugu,
-  Noto_Serif_Yezidi,
-  Source_Serif_4,
-} from "next/font/google";
-import localFont from "next/font/local";
+import { Inter, Kalnia } from "next/font/google";
 
 export const inter = Inter({
   weight: ["200", "300", "400", "500", "600"],

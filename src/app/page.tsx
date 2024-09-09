@@ -1,11 +1,10 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CalendarDaysIcon } from "lucide-react";
 import React, { useRef } from "react";
 import ImageRestaurant from "@/assets/img/restaurant_inside1.png";
 import ImageFood1 from "@/assets/img/food_1.jpeg";
-import ImageMenuExecutivo from "@/assets/img/menu_executivo.jpg";
-import ImageMenuBanquete from "@/assets/img/menu_banquete.jpg";
+import { EVENTS } from "@/utils/constants";
 import ImageUberEats from "@/assets/img/test/uber-eats.svg";
 import ImageGlovo from "@/assets/img/test/Glovo_logo.svg";
 import Image from "next/image";
@@ -18,12 +17,26 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 import Heading2 from "@/components/ui/heading-2";
 import LogoInstagram from "@/components/shared/logo-instagram";
 import LogoFacebook from "@/components/shared/logo-facebook";
+import CardEvent from "@/components/shared/card-event";
 
 export default function Home() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <>
+      <div className="fixed bottom-10 w-full z-20">
+        <Wrapper>
+          <Link href="/reservar">
+            <Button
+              variant="secondary"
+              className="shadow-2xl hover:bg-secondary-foreground hover:scale-105 text-primary-foreground w-fit mx-auto px-12 py-8 flex rounded-full"
+            >
+              <CalendarDaysIcon />
+              <h2 className="font-bold text-base ml-2">Reservar Mesa</h2>
+            </Button>
+          </Link>
+        </Wrapper>
+      </div>
       {/* landing */}
       <section className="relative flex h-[calc(90vh-128px)] w-full items-center justify-center">
         <div className="mb-32 flex flex-col items-center font-bellagia ">
@@ -105,41 +118,8 @@ export default function Home() {
           </div>
         </Wrapper>
         <Wrapper className="mt-8 grid gap-y-8 sm:gap-x-12 md:grid-cols-2 lg:gap-x-28">
-          {[
-            {
-              label: "Menu Executivo",
-              sublabel:
-                "Para aniversários, eventos corporativos e outras ocasiões especiais.",
-              image: ImageMenuExecutivo,
-            },
-            {
-              label: "Menu Banquete",
-              sublabel:
-                "Ideal para casamentos, batizados, comunhões e outras celebrações.",
-              image: ImageMenuBanquete,
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="rounded-2x relative h-[480px] w-full overflow-hidden bg-primary md:h-[630px]"
-            >
-              <div className="absolute h-full w-full bg-gradient-to-t from-secondary to-black/20 transition-all group-hover:h-full"></div>
-              <Image
-                className="h-full w-full object-cover"
-                src={item.image}
-                alt=""
-              />
-              <div className="absolute bottom-8 px-8 sm:bottom-14 gap-8 flex flex-col w-full items-start sm:px-14">
-                <div className="flex flex-col text-start text-primary">
-                  <Heading1 className="text-primary text-2xl">
-                    {item.label}
-                  </Heading1>
-                  <Heading2 className="text-primary-foreground text-xl mt-2 text-pretty">
-                    {item.sublabel}
-                  </Heading2>
-                </div>
-              </div>
-            </div>
+          {EVENTS.map((item: any, index) => (
+            <CardEvent key={index} {...item} />
           ))}
         </Wrapper>
         <Wrapper>
@@ -157,7 +137,7 @@ export default function Home() {
           </div>
         </Wrapper>
       </section>
-      <Footer />
+      <Footer className="pb-36" />
     </>
   );
 }

@@ -14,6 +14,18 @@ import LogoInstagram from "../shared/logo-instagram";
 import LogoFacebook from "../shared/logo-facebook";
 import Heading1 from "../ui/heading-1";
 
+const routes = [
+  { name: "Inicio", url: "/" },
+  { name: "Menu", url: "/menu" },
+  {
+    name: "Diarias",
+    url: "https://www.instagram.com/reidompipas",
+    props: { target: "_blank" },
+  },
+  { name: "Eventos", url: "/eventos" },
+  { name: "Reservar", url: "/reservar" },
+];
+
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -87,16 +99,7 @@ const Navbar: React.FC = () => {
           {/* items */}
           <Wrapper className="flex flex-col w-full">
             <div className="flex flex-col items-center w-full divide-y">
-              {[
-                { name: "Inicio", url: "/" },
-                { name: "Menu", url: "/menu" },
-                {
-                  name: "Diarias",
-                  url: "https://www.instagram.com/stories/cristiano",
-                  props: { target: "_blank" },
-                },
-                { name: "Eventos", url: "/eventos" },
-              ].map((item, index) => (
+              {routes.map((item, index) => (
                 <Link
                   key={index}
                   href={item.url}

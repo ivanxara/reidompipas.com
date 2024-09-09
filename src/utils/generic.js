@@ -17,3 +17,27 @@ export const arr = {
     }, {});
   },
 };
+
+export const time = {
+  generateHours: (startHour, endHour, startMinutes = 0, endMinutes = 60) => {
+    const times = [];
+    for (let hour = startHour; hour <= endHour; hour++) {
+      for (
+        let minutes = hour === startHour ? startMinutes : 0;
+        minutes < endMinutes;
+        minutes += 15
+      ) {
+        if (hour === endHour && minutes > 30) break;
+        times.push(`${hour}:${minutes.toString().padStart(2, "0")}`);
+      }
+    }
+    return times;
+  },
+};
+
+export const date = {
+  format: (date) => {
+    const [year, month, day] = date.split("-");
+    return `${day}-${month}-${year}`;
+  },
+};
