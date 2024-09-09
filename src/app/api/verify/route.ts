@@ -2,9 +2,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import Twilio from "twilio";
 
-const accountSid = "TWILIO_ACCOUNT_SID_PLACEHOLDER";
-const authToken = "TWILIO_AUTH_TOKEN_PLACEHOLDER";
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_ACCOUNT_AUTH_TOKEN;
 const client = Twilio(accountSid, authToken);
+
+const serviceId = process.env.TWILIO_SERVICE_ID || "";
 
 export async function POST(req: NextRequest) {
   try {
@@ -18,7 +20,7 @@ export async function POST(req: NextRequest) {
     }
 
     const verificationCheck = await client.verify.v2
-      .services("TWILIO_SERVICE_ID_PLACEHOLDER")
+      .services(serviceId)
       .verificationChecks.create({ to, code });
 
     return NextResponse.json(
