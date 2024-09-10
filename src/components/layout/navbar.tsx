@@ -110,7 +110,7 @@ const Navbar: React.FC = () => {
                   onClick={() => setOpen(false)}
                   className="flex items-center justify-between py-4 px-2 w-full hover:bg-primary text-center"
                 >
-                  <Heading1 className="text-primary-foreground">
+                  <Heading1 className="text-primary-foreground text-start">
                     {item.name}
                   </Heading1>
                 </Link>
