@@ -13,13 +13,14 @@ import { cn } from "@/lib/utils";
 import LogoInstagram from "../shared/logo-instagram";
 import LogoFacebook from "../shared/logo-facebook";
 import Heading1 from "../ui/heading-1";
+import { SOCIALS } from "@/utils/constants";
 
 const routes = [
   { name: "Inicio", url: "/" },
   { name: "Menu", url: "/menu" },
   {
     name: "Diarias",
-    url: "https://www.instagram.com/reidompipas",
+    url: SOCIALS.INSTAGRAM,
     props: { target: "_blank" },
   },
   { name: "Eventos", url: "/eventos" },
@@ -30,10 +31,8 @@ const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    // Toggle the 'no-scroll' class on the body element
     document.body.classList.toggle("no-scroll", open);
 
-    // Cleanup on component unmount
     return () => {
       document.body.classList.remove("no-scroll");
     };
@@ -47,7 +46,12 @@ const Navbar: React.FC = () => {
           open ? "bg-secondary" : "bg-background"
         )}
       >
-        <div className="flex w-full justify-between">
+        <div
+          className={cn(
+            "flex w-full justify-between items-center relative",
+            open && "sm:pr-4"
+          )}
+        >
           <Link href="/">
             <div className="flex items-center gap-2">
               <Image src={Pipas} width={32} alt="rei dom pipas" />
@@ -68,12 +72,13 @@ const Navbar: React.FC = () => {
           </Link>
           {/* menu icon */}
           <button
+            className="absolute px-10 py-8 -right-5 z-10"
             onClick={() => setOpen(!open)}
-            className="relative group grid place-items-center"
-          >
+          ></button>
+          <div className="relative group grid place-items-center">
             <div className="w-10 pointer-events-none">
               <div
-                className={`menu-icon group-active:scale-[80%] size-4 ${
+                className={`menu-icon group-active:scale-[90%] size-4 ${
                   open ? "active" : ""
                 }`}
               >
@@ -91,7 +96,7 @@ const Navbar: React.FC = () => {
                 </div>
               </div>
             </div>
-          </button>
+          </div>
         </div>
       </Wrapper>
       {open && (

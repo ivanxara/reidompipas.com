@@ -1,5 +1,6 @@
 "use client";
 
+import { supabase } from "@/lib/supabase/client";
 import axios from "axios";
 import React, { useEffect } from "react";
 
@@ -17,6 +18,13 @@ export default function Page() {
       throw error;
     }
   };
+
+  useEffect(() => {
+    const fetch = async () => {
+      console.log(await supabase.from("categories").select());
+    };
+    fetch();
+  }, []);
 
   return (
     <div>

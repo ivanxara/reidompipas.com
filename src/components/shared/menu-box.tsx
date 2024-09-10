@@ -5,19 +5,23 @@ import { Badge } from "../ui/badge";
 import { cn } from "@/lib/utils";
 
 const MenuBox = ({ product = {} }: any) => {
+  if (product.name.includes("teste")) {
+    console.log({ product });
+  }
+
   return (
     <>
       <div className="flex items-start gap-4 font-avenir font-light text-black">
-        {/* {product.image && (
-        <Image
-          draggable={false}
-          alt="food"
-          src={product.image}
-          width={56}
-          height={56}
-          className="aspect-square object-cover"
-        />
-      )} */}
+        {product.image && (
+          <Image
+            draggable={false}
+            alt={product.name}
+            src={product.image}
+            width={56}
+            height={56}
+            className="aspect-square object-cover"
+          />
+        )}
         <div className="w-full text-xs ">
           {/* label and price */}
           <div className="dots flex items-center justify-between gap-2">
@@ -31,7 +35,7 @@ const MenuBox = ({ product = {} }: any) => {
                 </div>
               )}
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <span className="w-10 whitespace-nowrap text-end">
                 {product.price ? `${product.price.toFixed(2)} €` : ``}
               </span>

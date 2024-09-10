@@ -4,7 +4,7 @@ import { ArrowUpRight, CalendarDaysIcon } from "lucide-react";
 import React, { useRef } from "react";
 import ImageRestaurant from "@/assets/img/restaurant_inside1.png";
 import ImageFood1 from "@/assets/img/food_1.jpeg";
-import { EVENTS } from "@/utils/constants";
+import { EVENTS, MENUS } from "@/utils/constants";
 import ImageUberEats from "@/assets/img/test/uber-eats.svg";
 import ImageGlovo from "@/assets/img/test/Glovo_logo.svg";
 import Image from "next/image";
@@ -19,9 +19,23 @@ import LogoInstagram from "@/components/shared/logo-instagram";
 import LogoFacebook from "@/components/shared/logo-facebook";
 import CardEvent from "@/components/shared/card-event";
 import FloatingBooking from "@/components/shared/floating-booking";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/lib/supabase/client";
 
 export default function Home() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  const queryProducts = useQuery({
+    queryKey: ["special_products"],
+    queryFn: async () => {
+      const { data = [], error } = await supabase
+        .from("newMenus")
+        .select("*, products(*)")
+        .eq("menuId", MENUS.MENU.ID);
+
+      return data?.map((item) => item.products);
+    },
+  });
 
   return (
     <>
@@ -79,22 +93,20 @@ export default function Home() {
               </Button>
             </div>
             <div className="mt-4 flex flex-col divide-y-2 divide-secondary/10 text-2xl md:mt-8">
-              {[
-                { name: "Rei dom pipas", price: "25 €" },
-                { name: "Bacalhão", price: "22.5 €" },
-                { name: "Peixos", price: "22.5 €" },
-                { name: "Peixos", price: "22.5 €" },
-              ].map((item, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between py-4"
-                  >
-                    <span className="tracking-tight">{item.name}</span>
-                    <span className="font-light">{item.price}</span>
-                  </div>
-                );
-              })}
+              {queryProducts.data &&
+                queryProducts.data.slice(0, 5).map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="flex items-center justify-between py-4"
+                    >
+                      <span className="tracking-tight">{item.name}</span>
+                      <span className="font-light">
+                        {parseFloat(item.price).toFixed(2)} €
+                      </span>
+                    </div>
+                  );
+                })}
               <div className="">
                 <Link
                   href="/menu"
@@ -112,7 +124,7 @@ export default function Home() {
           ))}
         </Wrapper>
         <Wrapper>
-          <div className="flex relative flex-col gap-4 bg-primary px-20 py-20 sm:p-20">
+          <div className="flex relative flex-col gap-4 bg-secondary px-20 py-20 sm:p-20">
             <div className="flex w-full flex-col items-center justify-center font-bellagia text-2xl font-light uppercase italic text-primary-foreground md:flex-row">
               fazemos
               <span className="pl-3.5 font-inter text-4xl font-bold  not-italic">

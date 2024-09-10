@@ -7,7 +7,7 @@ import React from "react";
 import Wrapper from "./wrapper";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { CONTACTS } from "@/utils/constants";
+import { CONTACTS, EMAIL, GOOGLE_MAPS } from "@/utils/constants";
 
 export default function Footer({ className }: any) {
   return (
@@ -33,7 +33,7 @@ export default function Footer({ className }: any) {
               3720-216 Oliveira de Azeméis, Portugal
               <div className="">
                 <Button className="mt-2" variant="capsule">
-                  <Link href="/menu">Ver Mapa</Link>
+                  <Link href={GOOGLE_MAPS}>Ver Mapa</Link>
                 </Button>
               </div>
             </div>
@@ -65,7 +65,7 @@ export default function Footer({ className }: any) {
                 </span>
               </a>
               <a className=" mt-2 underline underline-offset-2" href="">
-                reidompipas@hotmail.com
+                {EMAIL}
               </a>
             </div>
           </div>

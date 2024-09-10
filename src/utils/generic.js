@@ -16,6 +16,20 @@ export const arr = {
       return acc;
     }, {});
   },
+  orderBy(array, key) {
+    return array.sort((a, b) => {
+      const getValue = (obj, path) => {
+        return path.split(".").reduce((acc, part) => acc && acc[part], obj);
+      };
+
+      const aValue = getValue(a, key);
+      const bValue = getValue(b, key);
+
+      if (aValue < bValue) return -1;
+      if (aValue > bValue) return 1;
+      return 0;
+    });
+  },
 };
 
 export const time = {

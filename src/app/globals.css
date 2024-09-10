@@ -84,6 +84,10 @@
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
+.scrollbar-gutter {
+  scrollbar-gutter: stable;
+}
+
 /* @media only screen and (max-width: 768px) {
   .no-scroll {
     padding-right: 0px;

@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { EMAIL } from "@/utils/constants";
 
 export default function DialogTerms() {
   return (
@@ -24,13 +25,13 @@ export default function DialogTerms() {
             Clique aqui para ver os termos.
           </span>
         </DialogTrigger>
-        <DialogContent className="max-h-[70vh] overflow-auto">
+        <DialogContent>
           <DialogHeader>
             <DialogTitle>
               Termos de Tratamento de Dados e Política de Privacidade
             </DialogTitle>
           </DialogHeader>
-          <div className="space-y-4 text-sm">
+          <div className="space-y-4 text-sm max-h-[70vh] overflow-auto">
             <p>
               O Rei Dom Pipas valoriza a privacidade e a proteção dos dados
               pessoais dos seus clientes. Esta política de privacidade explica
@@ -124,7 +125,7 @@ export default function DialogTerms() {
             </ul>
             <p>
               Para exercer qualquer um destes direitos, pode contactar-nos
-              através do e-mail, reidompipas@hotmail.com.
+              através do e-mail, {EMAIL}.
             </p>
             <p>
               <strong>8. Alterações a esta Política</strong>

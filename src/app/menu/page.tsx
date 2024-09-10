@@ -2,29 +2,43 @@ import Wrapper from "@/components/layout/wrapper";
 import MenuBox from "@/components/shared/menu-box";
 import Heading1 from "@/components/ui/heading-1";
 import Heading2 from "@/components/ui/heading-2";
-import { supabase } from "@/lib/supabase";
 import Footer from "@/components/layout/footer";
-import { Baby, Beef, Fish, Leaf, Salad } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { arr } from "@/utils/generic";
-import ClientSideMenu from "./client-menu";
+import { MENUS } from "@/utils/constants";
+import { supabase } from "@/lib/supabase/server";
 
 export default async function Page() {
-  // Fetch data on the server side
-  const { data } = await supabase.from("products").select("*, categories(*)");
-  const productsByCategory = arr.groupBy(data, "categories.name");
+  const [
+    { data: menuData, error: menuError },
+    { data: categories, error: categoriesError },
+  ] = await Promise.all([
+    supabase
+      .from("newMenus")
+      .select("*, products(*, categories(*))")
+      .eq("menuId", MENUS.MENU.ID),
+    supabase.from("categories").select().order("order"),
+  ]);
+
+  if (menuError || categoriesError || !menuData || !categories) return null;
+
+  const products = menuData.flatMap((item) => item.products);
+  const productsByCategory = arr.groupBy(products, "categories.name");
+
+  const sortedProductsByCategory = categories.reduce((obj, category) => {
+    const categoryName = category.name;
+    if (productsByCategory[categoryName]) {
+      obj[categoryName] = productsByCategory[categoryName];
+    }
+    return obj;
+  }, {});
 
   return (
     <div>
-      {/* Client-side component for menu and scroll behavior */}
-      {/* <ClientSideMenu /> */}
-
       <Wrapper>
         <Heading1 className="pb-10">Menu</Heading1>
         <div className="flex flex-col gap-20">
-          {Object.keys(productsByCategory).map((category) => {
-            const products = productsByCategory[category];
-            return (
+          {Object.entries(sortedProductsByCategory).map(
+            ([category, products]: any) => (
               <div
                 id={category}
                 key={category}
@@ -37,8 +51,8 @@ export default async function Page() {
                   ))}
                 </div>
               </div>
-            );
-          })}
+            )
+          )}
         </div>
       </Wrapper>
       <Footer className="!pb-32" />

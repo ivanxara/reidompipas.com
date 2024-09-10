@@ -15,7 +15,15 @@ import { Calendar } from "@/components/ui/calendar";
 import Heading2 from "@/components/ui/heading-2";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { BookMarked, Check, ChevronLeft, ChevronRightIcon } from "lucide-react";
+import {
+  BookMarked,
+  CalendarArrowUp,
+  Check,
+  CheckCircle,
+  ChevronLeft,
+  ChevronRightIcon,
+  UtensilsCrossed,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import axios from "axios";
@@ -43,7 +51,7 @@ import React, { useState } from "react";
 import { format } from "date-fns";
 import { Card } from "@/components/ui/card";
 import { date, time } from "@/utils/generic";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase/client";
 import { Checkbox } from "@/components/ui/checkbox";
 import DialogTerms from "@/components/shared/dialog-terms";
 
@@ -340,11 +348,15 @@ const PersonalDetails = ({ setPage, onSubmit, reservation }: any) => {
                 )}
               />
             </div>
-
             {/* Submit button */}
             <div className="flex flex-col items-center justify-center gap-2 mt-4">
-              <Button type="submit" variant="capsuleBig">
+              <Button
+                type="submit"
+                variant="capsuleBig"
+                className="w-full sm:w-fit sm:min-w-[320px]"
+              >
                 <span>Reservar</span>
+                <CheckCircle className="size-4 ml-2" />
               </Button>
               <FormDescription className="text-center text-xs">
                 Ao clicar em reservar, enviaremos a confirmação da sua reserva
