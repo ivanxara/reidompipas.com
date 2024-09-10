@@ -5,9 +5,10 @@ import Heading2 from "@/components/ui/heading-2";
 import Footer from "@/components/layout/footer";
 import { arr } from "@/utils/generic";
 import { MENUS } from "@/utils/constants";
-import { supabase } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function Page() {
+  const supabase = await createClient();
   const [
     { data: menuData, error: menuError },
     { data: categories, error: categoriesError },
