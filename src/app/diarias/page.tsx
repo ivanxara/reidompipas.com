@@ -3,7 +3,7 @@ import Heading1 from "@/components/ui/heading-1";
 import Heading2 from "@/components/ui/heading-2";
 import Footer from "@/components/layout/footer";
 import { arr, date } from "@/utils/generic";
-import { MENUS } from "@/utils/constants";
+import { MENUS, SOCIALS } from "@/utils/constants";
 import { createClient } from "@/lib/supabase/server";
 import {
   Card,
@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
 import { Star } from "lucide-react";
 import FloatingWhatsapp from "@/components/shared/floating-whatsapp";
+import Link from "next/link";
 
 export default async function Page() {
   const supabase = await createClient();
@@ -47,7 +48,7 @@ export default async function Page() {
 
   return (
     <>
-      {/* <FloatingWhatsapp /> */}
+      <FloatingWhatsapp />
       <Wrapper className="flex flex-col">
         <Heading1>Menu Executivo</Heading1>
         <Heading2 className="text-sm">
@@ -61,10 +62,12 @@ export default async function Page() {
             Também pode seguir-nos no Instagram, onde partilhamos diariamente os
             pratos do dia nos stories.
           </div>
-          <Button variant="capsule" className="w-fit">
-            <InstagramLogoIcon />
-            <span>Abrir Instagram</span>
-          </Button>
+          <Link href={SOCIALS.INSTAGRAM} target="_blank">
+            <Button variant="capsule" className="w-fit">
+              <InstagramLogoIcon />
+              <span>Abrir Instagram</span>
+            </Button>
+          </Link>
         </div>
         {/*  */}
         <div className="flex flex-col mt-10">

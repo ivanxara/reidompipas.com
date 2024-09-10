@@ -10,12 +10,11 @@ export default function FloatingWhatsapp() {
 
   return (
     <div className="fixed bottom-8 z-20 right-6 sm:right-8 md:right-12 lg:right-16 xl:right-20 hover:scale-105 transition-all">
-      <button
-        onClick={() => window.open(link, "_blank", "noopener,noreferrer")}
-        className="shadow-custom-2 bg-[#25D366] animation-float size-16 grid place-items-center rounded-full ml-auto"
-      >
-        <Image className="size-8" src={WhatsappLogo} alt="whatsapp logo" />
-      </button>
+      <Link href={link} target="_blank">
+        <button className="shadow-custom-2 bg-[#25D366] animation-float size-16 grid place-items-center rounded-full ml-auto">
+          <Image className="size-8" src={WhatsappLogo} alt="whatsapp logo" />
+        </button>
+      </Link>
     </div>
   );
 }

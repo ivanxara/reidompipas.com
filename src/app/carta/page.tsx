@@ -37,7 +37,7 @@ export default async function Page() {
 
   return (
     <>
-      {/* <FloatingWhatsapp /> */}
+      <FloatingWhatsapp />
       <Wrapper className="flex flex-col gap-10">
         <Heading1>Carta</Heading1>
         <div className="flex flex-col gap-20">
