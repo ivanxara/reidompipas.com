@@ -40,7 +40,7 @@ const MenuBox = ({ product = {} }: any) => {
                 {product.price ? `${product.price.toFixed(2)} €` : ``}
               </span>
               {product.price2 && (
-                <span className="w-10 whitespace-nowrap text-end">
+                <span className="w-10 whitespace-nowrap text-end mr-[1px]">
                   {product.price2 ? `${product.price2.toFixed(2)} €` : ``}
                 </span>
               )}

@@ -21,6 +21,7 @@ import CardEvent from "@/components/shared/card-event";
 import FloatingBooking from "@/components/shared/floating-booking";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase/client";
+import FloatingWhatsapp from "@/components/shared/floating-whatsapp";
 
 export default function Home() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -39,7 +40,8 @@ export default function Home() {
 
   return (
     <>
-      <FloatingBooking />
+      <FloatingWhatsapp />
+      {/* <FloatingBooking /> */}
       {/* landing */}
       <section className="relative flex h-[calc(90vh-128px)] w-full items-center justify-center">
         <div className="mb-32 flex flex-col items-center font-bellagia ">
@@ -87,9 +89,9 @@ export default function Home() {
           />
           <div className="flex flex-col">
             <div className="flex w-full items-center justify-between">
-              <Heading1>MENU</Heading1>
+              <Heading1>CARTA</Heading1>
               <Button variant="capsule">
-                <Link href="/menu">Ver tudo</Link>
+                <Link href="/carta">Ver tudo</Link>
               </Button>
             </div>
             <div className="mt-4 flex flex-col divide-y-2 divide-secondary/10 text-2xl md:mt-8">
@@ -109,10 +111,10 @@ export default function Home() {
                 })}
               <div className="">
                 <Link
-                  href="/menu"
+                  href="/carta"
                   className="flex pt-4 text-xs underline underline-offset-2"
                 >
-                  Ver menu completo
+                  Ver carta completa
                 </Link>
               </div>
             </div>

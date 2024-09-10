@@ -6,6 +6,7 @@ import Footer from "@/components/layout/footer";
 import { arr } from "@/utils/generic";
 import { MENUS } from "@/utils/constants";
 import { createClient } from "@/lib/supabase/server";
+import FloatingWhatsapp from "@/components/shared/floating-whatsapp";
 
 export default async function Page() {
   const supabase = await createClient();
@@ -16,7 +17,8 @@ export default async function Page() {
     supabase
       .from("newMenus")
       .select("*, products(*, categories(*))")
-      .eq("menuId", MENUS.MENU.ID),
+      .eq("menuId", MENUS.MENU.ID)
+      .eq("status", true),
     supabase.from("categories").select().order("order"),
   ]);
 
@@ -34,9 +36,10 @@ export default async function Page() {
   }, {});
 
   return (
-    <div>
-      <Wrapper>
-        <Heading1 className="pb-10">Menu</Heading1>
+    <>
+      {/* <FloatingWhatsapp /> */}
+      <Wrapper className="flex flex-col gap-10">
+        <Heading1>Carta</Heading1>
         <div className="flex flex-col gap-20">
           {Object.entries(sortedProductsByCategory).map(
             ([category, products]: any) => (
@@ -46,7 +49,7 @@ export default async function Page() {
                 className="flex w-full flex-col"
               >
                 <Heading2>{category}</Heading2>
-                <div className="mt-6 grid w-full grid-cols-1 gap-x-20 gap-y-10 sm:grid-cols-2">
+                <div className="mt-6 grid w-full grid-cols-1 gap-x-20 gap-y-10 md:grid-cols-2">
                   {products.map((product: any, index: number) => (
                     <MenuBox key={index} product={product} />
                   ))}
@@ -57,6 +60,6 @@ export default async function Page() {
         </div>
       </Wrapper>
       <Footer className="!pb-32" />
-    </div>
+    </>
   );
 }

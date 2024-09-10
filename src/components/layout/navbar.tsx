@@ -17,11 +17,10 @@ import { SOCIALS } from "@/utils/constants";
 
 const routes = [
   { name: "Inicio", url: "/" },
-  { name: "Menu", url: "/menu" },
+  { name: "Carta", url: "/carta" },
   {
-    name: "Diarias",
-    url: SOCIALS.INSTAGRAM,
-    props: { target: "_blank" },
+    name: "Menu Executivo",
+    url: "/diarias",
   },
   { name: "Eventos", url: "/eventos" },
   { name: "Reservar", url: "/reservar" },
@@ -104,13 +103,12 @@ const Navbar: React.FC = () => {
           {/* items */}
           <Wrapper className="flex flex-col w-full">
             <div className="flex flex-col items-center w-full divide-y">
-              {routes.map((item, index) => (
+              {routes.map((item: any, index) => (
                 <Link
                   key={index}
                   href={item.url}
                   onClick={() => setOpen(false)}
                   className="flex items-center justify-between py-4 px-2 w-full hover:bg-primary text-center"
-                  {...item.props}
                 >
                   <Heading1 className="text-primary-foreground">
                     {item.name}
