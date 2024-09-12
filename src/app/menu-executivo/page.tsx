@@ -81,7 +81,7 @@ export default async function Page() {
           <div className="mt-10 flex flex-col gap-1">
             <Heading2>Fim de semana</Heading2>
             <span>
-              Durante o fim de semana não servimos os pratos diários. Aproveite
+              Durante o fim de semana não servimos o menu executivo. Aproveite
               para descobrir novas e deliciosas opções na nossa carta.
             </span>
             <Link href="/carta" target="_blank">
@@ -92,31 +92,38 @@ export default async function Page() {
             </Link>
           </div>
         ) : (
-          <div className="mt-10">
-            {/* <Heading2 className="flex items-center gap-2">Menu</Heading2> */}
-            <div className="flex flex-col md:flex-row-reverse md:justify-end md:gap-x-40 gap-y-10">
-              {[
-                { label: "Exclusivo", price: "12,5", key: "true" },
-                { label: "Econômico", price: "8,5", key: "false" },
-              ].map((item, index) => (
-                <div key={index} className="flex flex-col gap-2">
-                  <Heading2 className="flex  items-center gap-2">
-                    {item.key === "true" && (
-                      <Star className="text-primary fill-primary size-4 mt-0.5" />
-                    )}
-                    <span>{item.label}</span>
-                  </Heading2>
-                  <div className="flex flex-col gap-1.5">
-                    {/* @ts-ignore */}
-                    {products[item.key].map((item: any, index: number) => (
-                      <span key={index}>{item.products.name}</span>
-                    ))}
-                    <span className="text-xs">- {item.price} €</span>
+          <>
+            <Heading1 className="mt-10">
+              Couvert + Sopa + Prato + Bebida + Café
+            </Heading1>
+            <div className="mt-10">
+              {/* <Heading2 className="flex items-center gap-2">Menu</Heading2> */}
+              <div className="flex flex-col mt-4 md:flex-row-reverse md:justify-end md:gap-x-40 gap-y-10">
+                {[
+                  { label: "Especial", price: "11.00", key: "true" },
+                  { label: "Económico", price: "8.00", key: "false" },
+                ].map((item, index) => (
+                  <div key={index} className="flex flex-col gap-2">
+                    <Heading2 className="flex  items-center gap-2">
+                      {item.key === "true" && (
+                        <Star className="text-primary fill-primary size-4 mt-0.5" />
+                      )}
+                      <span>
+                        {item.label} - {item.price} €
+                      </span>
+                    </Heading2>
+                    <div className="flex flex-col gap-1.5">
+                      {/* @ts-ignore */}
+                      {products[item.key].map((item: any, index: number) => (
+                        <span key={index}>{item.products.name}</span>
+                      ))}
+                      {/* <span className="text-xs">- {item.price} €</span> */}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          </>
         )}
       </Wrapper>
       <Footer className="!pb-32" />
