@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
-import { FacebookIcon } from "lucide-react";
+import { Clipboard, FacebookIcon } from "lucide-react";
 import Link from "next/link";
 import Pipas from "@/assets/img/logo_pipas.png";
 import React from "react";
@@ -8,6 +8,17 @@ import Wrapper from "./wrapper";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { CONTACTS, EMAIL, GOOGLE_MAPS } from "@/utils/constants";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "../ui/input";
+import CopyText from "../shared/copy-text";
 
 export default function Footer({ className }: any) {
   return (
@@ -48,26 +59,49 @@ export default function Footer({ className }: any) {
                 </ul>
               </div>
             </div>
-            <div className="flex flex-col">
-              <h2 className="mb-2 font-bold">Contactos</h2>
-              <a className=" underline underline-offset-2" href="">
-                {CONTACTS.PERSONAL}
-                <span className="text-[10px]">
-                  {" "}
-                  (Chamada para rede fixa nacional)
-                </span>
-              </a>
-              <a className=" underline underline-offset-2" href="">
-                {CONTACTS.COMPANY}
-                <span className="text-[10px]">
-                  {" "}
-                  (Chamada para rede móvel nacional)
-                </span>
-              </a>
-              <a className=" mt-2 underline underline-offset-2" href="">
-                {EMAIL}
-              </a>
-            </div>
+
+            <Dialog>
+              <DialogTrigger className="text-start items-start p-0 mb-2">
+                <div className="flex flex-col items-start justify-start">
+                  <h2 className="mb-2 font-bold">Contactos</h2>
+                  <a className=" underline underline-offset-2">
+                    {CONTACTS.PERSONAL}
+                    <span className="text-[10px]">
+                      {" "}
+                      (Chamada para rede fixa nacional)
+                    </span>
+                  </a>
+                  <a className=" underline underline-offset-2">
+                    {CONTACTS.COMPANY}
+                    <span className="text-[10px]">
+                      {" "}
+                      (Chamada para rede móvel nacional)
+                    </span>
+                  </a>
+                  <a className=" mt-2 underline underline-offset-2">{EMAIL}</a>
+                </div>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Contactos</DialogTitle>
+                  <DialogDescription>
+                    Veja abaixo os nossos contactos e clique no ícone para
+                    copiar
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="flex flex-col gap-4">
+                  {[
+                    { text: CONTACTS.PERSONAL },
+                    { text: CONTACTS.COMPANY },
+                    { text: EMAIL },
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center w-full gap-4">
+                      <CopyText text={item.text} />
+                    </div>
+                  ))}
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </Wrapper>

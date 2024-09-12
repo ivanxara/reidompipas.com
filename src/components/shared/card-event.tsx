@@ -19,7 +19,7 @@ export default function CardEvent({
   return (
     <Link
       href={to}
-      className="rounded-2x relative h-[480px] w-full overflow-hidden bg-primary md:h-[630px]"
+      className="rounded-2x relative h-[480px] w-full overflow-hidden bg-primary md:h-[680px]"
     >
       <div className="absolute h-full w-full bg-gradient-to-t from-secondary to-black/20 transition-all group-hover:h-full"></div>
       <Image className="h-full w-full object-cover" src={image} alt="" />

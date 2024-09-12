@@ -2,7 +2,8 @@
 
 import { ArrowUpRight, CalendarDaysIcon } from "lucide-react";
 import React, { useRef } from "react";
-import ImageRestaurant from "@/assets/img/restaurant_inside1.png";
+import ImageRestaurant1 from "@/assets/img/restaurant_inside1.png";
+import ImageRestaurant2 from "@/assets/img/restaurant_inside2.webp";
 import ImageFood1 from "@/assets/img/food_1.jpeg";
 import { EVENTS, MENUS } from "@/utils/constants";
 import ImageUberEats from "@/assets/img/test/uber-eats.svg";
@@ -22,9 +23,12 @@ import FloatingBooking from "@/components/shared/floating-booking";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase/client";
 import FloatingWhatsapp from "@/components/shared/floating-whatsapp";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktopLG = useMediaQuery("(min-width: 1350px)");
+  const isDesktopXLG = useMediaQuery("(min-width: 1350px)");
 
   const queryProducts = useQuery({
     queryKey: ["special_products"],
@@ -32,7 +36,8 @@ export default function Home() {
       const { data = [], error } = await supabase
         .from("newMenus")
         .select("*, products(*)")
-        .eq("menuId", MENUS.MENU.ID);
+        .eq("menuId", MENUS.MENU.ID)
+        .eq("special", true);
 
       return data?.map((item) => item.products);
     },
@@ -57,15 +62,19 @@ export default function Home() {
       <section className="flex flex-col gap-20 md:gap-28">
         {/* about */}
         <Wrapper>
-          {/* <h1 className="font-bellagia text-2xl">Restaurante</h1> */}
+          {/* mobile */}
           <Image
-            className="h-[450px] sm:h-[400px] w-full object-cover"
-            src={ImageRestaurant}
-            alt=""
-            style={{
-              objectPosition: isDesktop ? "left -400px" : "-80px 0px",
-            }}
+            className="w-full lg:hidden max-h-[500px] object-cover "
+            src={ImageRestaurant2}
+            alt="Restaurante Dentro Mobile"
           />
+          {/* destop */}
+          <Image
+            className={cn("w-full hidden max-h-[430px] lg:block object-cover")}
+            src={ImageRestaurant1}
+            alt="Restaurante Dentro Desktop"
+          />
+
           <div className="mt-4 flex justify-between md:mt-8">
             <h2 className="font-inter text-secondary text-justify">
               O restaurante Rei Dom Pipas é um espaço acolhedor com mais de 20
@@ -83,7 +92,7 @@ export default function Home() {
         {/* menu */}
         <Wrapper className="grid gap-y-8 sm:gap-x-12 md:grid-cols-2 lg:gap-x-28">
           <Image
-            className="h-[450px] sm:h-[400px] md:h-[630px] w-full object-cover"
+            className="h-[500px] sm:h-[400px] md:h-[680px] w-full object-cover "
             src={ImageFood1}
             alt="pipasInside"
           />
@@ -103,7 +112,7 @@ export default function Home() {
                       className="flex items-center justify-between py-4"
                     >
                       <span className="tracking-tight">{item.name}</span>
-                      <span className="font-light">
+                      <span className="font-light text-base">
                         {parseFloat(item.price).toFixed(2)} €
                       </span>
                     </div>

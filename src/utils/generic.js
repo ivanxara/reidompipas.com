@@ -1,3 +1,5 @@
+export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export const arr = {
   groupBy(array, key) {
     return array.reduce((acc, obj) => {

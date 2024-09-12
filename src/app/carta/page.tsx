@@ -19,10 +19,14 @@ export default async function Page() {
       .select("*, products(*, categories(*))")
       .eq("menuId", MENUS.MENU.ID)
       .eq("status", true),
-    supabase.from("categories").select().order("order"),
+    supabase.from("categories").select().eq("status", true).order("order"),
   ]);
 
-  if (menuError || categoriesError || !menuData || !categories) return null;
+  if (menuError || categoriesError || !menuData || !categories) {
+    console.log({ menuError });
+    console.log({ categoriesError });
+    return;
+  }
 
   const products = menuData.flatMap((item) => item.products);
   const productsByCategory = arr.groupBy(products, "categories.name");

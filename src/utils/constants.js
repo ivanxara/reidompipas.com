@@ -2,8 +2,8 @@ import ImageMenuExecutivo from "@/assets/img/menu_executivo.jpg";
 import ImageMenuBanquete from "@/assets/img/menu_banquete.jpg";
 
 export const CONTACTS = {
-  PERSONAL: "+351 912040915",
-  COMPANY: "+351 256386200",
+  PERSONAL: "+351912040915",
+  COMPANY: "+351256386200",
 };
 export const WHATSAPP = "https://api.whatsapp.com/send/?phone=+351912040915";
 

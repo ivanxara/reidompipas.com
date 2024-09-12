@@ -92,6 +92,15 @@
   animation: 3s ease 0s infinite normal none running floatAnimation;
 }
 
+/* Custom CSS */
+.object-position-desktop-xlg {
+  object-position: left -1000px;
+}
+
+.object-position-default {
+  object-position: left -550px;
+}
+
 @keyframes floatAnimation {
   0% {
     transform: translate(0, 0);

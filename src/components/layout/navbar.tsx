@@ -20,10 +20,10 @@ const routes = [
   { name: "Carta", url: "/carta" },
   {
     name: "Menu Executivo",
-    url: "/diarias",
+    url: "/menu-executivo",
   },
   { name: "Eventos", url: "/eventos" },
-  { name: "Reservar", url: "/reservar" },
+  { name: "Reservas", url: "/reservas" },
 ];
 
 const Navbar: React.FC = () => {

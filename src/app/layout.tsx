@@ -6,6 +6,7 @@ import Footer from "@/components/layout/footer";
 import { cn } from "@/lib/utils";
 import { fonts } from "@/assets/fonts/fonts";
 import ReactQueryProvider from "@/providers/react-query";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         <body className={cn(inter.className, "text-secondary")}>
           <Navbar />
           {children}
+          <Analytics />
         </body>
       </html>
     </ReactQueryProvider>

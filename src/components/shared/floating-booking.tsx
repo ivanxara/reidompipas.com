@@ -10,7 +10,7 @@ export default function FloatingBooking() {
   return (
     <Link
       className="fixed bottom-8 left-8 sm:left-1/2 sm:transform sm:-translate-x-1/2 z-20"
-      href="/reservar"
+      href="/reservas"
     >
       <Button
         type="submit"
