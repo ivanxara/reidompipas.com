@@ -16,7 +16,7 @@ export default async function Page() {
   ] = await Promise.all([
     supabase
       .from("newMenus")
-      .select("*, products(*, categories(*))")
+      .select("*, products(*, categories(*), tags(*))")
       .eq("menuId", MENUS.MENU.ID)
       .eq("status", true),
     supabase.from("categories").select().eq("status", true).order("order"),

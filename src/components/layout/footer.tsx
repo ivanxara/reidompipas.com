@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
-import { Clipboard, FacebookIcon } from "lucide-react";
+import { Clipboard, FacebookIcon, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import Pipas from "@/assets/img/logo_pipas.png";
 import React from "react";
@@ -81,7 +81,7 @@ export default function Footer({ className }: any) {
                   <a className=" mt-2 underline underline-offset-2">{EMAIL}</a>
                 </div>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="px-4">
                 <DialogHeader>
                   <DialogTitle>Contactos</DialogTitle>
                   <DialogDescription>
@@ -91,12 +91,25 @@ export default function Footer({ className }: any) {
                 </DialogHeader>
                 <div className="flex flex-col gap-4">
                   {[
-                    { text: CONTACTS.PERSONAL },
-                    { text: CONTACTS.COMPANY },
-                    { text: EMAIL },
+                    { text: CONTACTS.PERSONAL, href: "tel:", icon: Phone },
+                    { text: CONTACTS.COMPANY, href: "tel:", icon: Phone },
+                    { text: EMAIL, href: "mailto:", icon: Mail },
                   ].map((item, index) => (
                     <div key={index} className="flex items-center w-full gap-4">
-                      <CopyText text={item.text} />
+                      <div className="rounded-md w-full border border-input bg-primary-foreground px-3 py-2 text-sm relative flex items-center">
+                        {item.text}
+                        <button className="absolute right-3 flex items-center gap-2 text-xs">
+                          <Button
+                            size="xs"
+                            className="gap-2 text-xs sm:bg-transparent "
+                            variant="ghost"
+                          >
+                            <a href={`${item.href}${item.text}`}>
+                              <item.icon className="size-4" />
+                            </a>
+                          </Button>
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>

@@ -53,24 +53,18 @@ const MenuBox = ({ product = {} }: any) => {
             </div>
           )}
           {/* tags */}
-          {/* {product.tags && (
-            <div className="mt-2 flex gap-2">
-              {product.tags.map((tag: any) => {
-                return (
-                  <Badge
-                    variant="tag"
-                    key={tag.name}
-                    className={cn(
-                      "rounded-none p-0 px-2 text-[8px] font-light text-white",
-                      tag.color
-                    )}
-                  >
-                    {tag.name}
-                  </Badge>
-                );
-              })}
-            </div>
-          )} */}
+          {product.tags && (
+            <Badge
+              variant="tag"
+              key={product.tags.name}
+              className={cn(
+                "rounded-none p-0 px-2 text-[8px] font-light mt-1 text-white"
+              )}
+              style={{ backgroundColor: product.tags.color }}
+            >
+              {product.tags.name}
+            </Badge>
+          )}
         </div>
       </div>
     </>

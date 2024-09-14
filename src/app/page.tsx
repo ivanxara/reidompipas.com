@@ -79,7 +79,7 @@ export default function Home() {
             <h2 className="font-inter text-secondary text-justify">
               O restaurante Rei Dom Pipas é um espaço acolhedor com mais de 20
               anos de história, gerido por uma equipa dedicada. Oferece pratos
-              da comida tradicional portuguesa e uma vasta seleção de vinhos
+              de comida tradicional portuguesa e uma vasta seleção de vinhos
               nacionais e internacionais. O objetivo é proporcionar uma
               hospitalidade calorosa e criar momentos de celebração, fazendo com
               que os clientes se sintam em casa.
@@ -112,7 +112,7 @@ export default function Home() {
                       className="flex items-center justify-between py-4"
                     >
                       <span className="tracking-tight">{item.name}</span>
-                      <span className="font-light text-base">
+                      <span className="font-light text-base whitespace-nowrap">
                         {parseFloat(item.price).toFixed(2)} €
                       </span>
                     </div>
@@ -121,7 +121,7 @@ export default function Home() {
               <div className="">
                 <Link
                   href="/carta"
-                  className="flex pt-4 text-xs underline underline-offset-2"
+                  className="flex pt-4 w-fit text-xs underline underline-offset-2"
                 >
                   Ver carta completa
                 </Link>

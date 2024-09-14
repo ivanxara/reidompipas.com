@@ -29,7 +29,7 @@ export const SOCIALS = {
 
 export const EVENTS = [
   {
-    label: "Menu Executivo",
+    label: "Menu para Grupos",
     subLabel:
       "Para aniversários, eventos corporativos e outras ocasiões especiais.",
     image: ImageMenuExecutivo,
