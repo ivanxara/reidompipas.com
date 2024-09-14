@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import "@/assets/styles/navbar.css";
 
-import pipas from "@/assets/img/logo_pipas.png";
 import Wrapper from "./wrapper";
 import { cn } from "@/lib/utils";
 import LogoInstagram from "../shared/logo-instagram";

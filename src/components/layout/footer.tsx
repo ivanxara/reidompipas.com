@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
 import { Clipboard, FacebookIcon, Mail, Phone } from "lucide-react";
 import Link from "next/link";
-import Pipas from "@/assets/img/logo_pipas.png";
 import React from "react";
 import Wrapper from "./wrapper";
 import Image from "next/image";

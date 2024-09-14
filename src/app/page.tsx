@@ -2,9 +2,9 @@
 
 import { ArrowUpRight, CalendarDaysIcon } from "lucide-react";
 import React, { useRef } from "react";
-import ImageRestaurant1 from "@/assets/img/restaurant_inside1.png";
+import ImageRestaurant1 from "@/assets/img/restaurant_inside1_webp.webp";
 import ImageRestaurant2 from "@/assets/img/restaurant_inside2.webp";
-import ImageFood1 from "@/assets/img/food_1.jpeg";
+import ImageFood1 from "@/assets/img/food_1_webp.webp";
 import { EVENTS, MENUS } from "@/utils/constants";
 import ImageUberEats from "@/assets/img/test/uber-eats.svg";
 import ImageGlovo from "@/assets/img/test/Glovo_logo.svg";

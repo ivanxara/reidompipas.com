@@ -1,5 +1,5 @@
-import ImageMenuExecutivo from "@/assets/img/menu_executivo.jpg";
-import ImageMenuBanquete from "@/assets/img/menu_banquete.jpg";
+import ImageMenuExecutivo from "@/assets/img/menu_executivo_webp.webp";
+import ImageMenuBanquete from "@/assets/img/menu_banquete_webp.webp";
 
 export const CONTACTS = {
   PERSONAL: "+351912040915",
