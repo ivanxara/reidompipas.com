@@ -17,8 +17,8 @@ export default function EventMenu({
 }) {
   const router = useRouter();
   return (
-    <div className="w-full">
-      <Wrapper>
+    <div className="w-full h-full">
+      {/* <Wrapper>
         <Button variant="capsule" onClick={() => router.back()}>
           <ChevronLeft className="size-4" />
           <span>Voltar</span>
@@ -35,9 +35,9 @@ export default function EventMenu({
             </a>
           </Button>
         </div>
-      </Wrapper>
-      <iframe
-        className="w-full h-[250vh] mt-4"
+      </Wrapper> */}
+      <embed
+        className="absolute left-0 top-0 w-full h-full"
         src={src}
         title="PDF Viewer"
         aria-label="PDF Viewer for the executive menu"
