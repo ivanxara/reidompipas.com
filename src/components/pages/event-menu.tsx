@@ -37,7 +37,7 @@ export default function EventMenu({
         </div>
       </Wrapper>
       <iframe
-        className="w-full h-[100vh] sm:h-screen mt-4"
+        className="w-full h-[250vh] mt-4"
         src={src}
         title="PDF Viewer"
         aria-label="PDF Viewer for the executive menu"
