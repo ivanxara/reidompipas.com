@@ -1,6 +1,13 @@
 import { cn } from "@/lib/utils";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
-import { Clipboard, FacebookIcon, Mail, Phone } from "lucide-react";
+import {
+  Clipboard,
+  FacebookIcon,
+  Mail,
+  Phone,
+  PhoneCall,
+  Send,
+} from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import Wrapper from "./wrapper";
@@ -90,8 +97,8 @@ export default function Footer({ className }: any) {
                 </DialogHeader>
                 <div className="flex flex-col gap-4">
                   {[
-                    { text: CONTACTS.PERSONAL, href: "tel:", icon: Phone },
-                    { text: CONTACTS.COMPANY, href: "tel:", icon: Phone },
+                    { text: CONTACTS.PERSONAL, href: "tel:", icon: PhoneCall },
+                    { text: CONTACTS.COMPANY, href: "tel:", icon: PhoneCall },
                     { text: EMAIL, href: "mailto:", icon: Mail },
                   ].map((item, index) => (
                     <div key={index} className="flex items-center w-full gap-4">

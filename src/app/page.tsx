@@ -64,7 +64,7 @@ export default function Home() {
         <Wrapper>
           {/* mobile */}
           <Image
-            className="w-full lg:hidden max-h-[500px] object-cover "
+            className="w-full lg:hidden h-[500px] object-cover "
             src={ImageRestaurant2}
             alt="Restaurante Dentro Mobile"
           />
