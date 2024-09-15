@@ -82,7 +82,7 @@ export default function Page() {
 
     // @ts-ignore
     const personsText = data.persons === 1 ? "pessoa" : "pessoas";
-    const message = `Olá, gostaria de reservar uma mesa para o dia ${formattedDate} às ${data.time} para ${data.persons} ${personsText}.`;
+    const message = `Olá, seria possível reservar uma mesa para ${data.persons} ${personsText} no dia ${formattedDate} às ${data.time}?`;
 
     window.open(
       `${WHATSAPP}&text=${encodeURIComponent(message)}`,
