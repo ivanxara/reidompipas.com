@@ -18,7 +18,8 @@ export default async function Page() {
       .from("newMenus")
       .select("*, products(*, categories(*), tags(*))")
       .eq("menuId", MENUS.MENU.ID)
-      .eq("status", true),
+      .eq("status", true)
+      .order("order", { ascending: true }),
     supabase.from("categories").select().eq("status", true).order("order"),
   ]);
 
@@ -29,6 +30,7 @@ export default async function Page() {
   }
 
   const products = menuData.flatMap((item) => item.products);
+
   const productsByCategory = arr.groupBy(products, "categories.name");
 
   const sortedProductsByCategory = categories.reduce((obj, category) => {
