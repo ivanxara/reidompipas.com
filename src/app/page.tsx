@@ -46,6 +46,7 @@ export default function Home() {
   return (
     <>
       <FloatingWhatsapp />
+      
       {/* <FloatingBooking /> */}
       {/* landing */}
       <section className="relative flex h-[calc(90vh-128px)] w-full items-center justify-center">
