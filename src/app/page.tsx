@@ -52,7 +52,7 @@ export default function Home() {
         <div className="mb-32 flex flex-col items-center font-bellagia ">
           {/* <Image src={Pipas} width={120} alt="rei dom pipas" /> */}
           <h1 className="text-md text-center font-light uppercase md:text-lg">
-            Resturante
+            Restaurante
           </h1>
           <h1 className="text-center text-4xl font-light uppercase tracking-[-0.1rem] md:text-6xl">
             Rei Dom Pipas
