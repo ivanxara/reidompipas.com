@@ -30,6 +30,8 @@ export default function Home() {
   const isDesktopLG = useMediaQuery("(min-width: 1350px)");
   const isDesktopXLG = useMediaQuery("(min-width: 1350px)");
 
+
+  
   const queryProducts = useQuery({
     queryKey: ["special_products"],
     queryFn: async () => {
