@@ -25,7 +25,6 @@ import { supabase } from "@/lib/supabase/client";
 import FloatingWhatsapp from "@/components/shared/floating-whatsapp";
 import { cn } from "@/lib/utils";
 
-
 export default function Home() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const isDesktopLG = useMediaQuery("(min-width: 1350px)");
