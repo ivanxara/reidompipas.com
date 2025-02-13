@@ -30,8 +30,6 @@ export default function Home() {
   const isDesktopLG = useMediaQuery("(min-width: 1350px)");
   const isDesktopXLG = useMediaQuery("(min-width: 1350px)");
 
-
-  
   const queryProducts = useQuery({
     queryKey: ["special_products"],
     queryFn: async () => {
@@ -48,7 +46,7 @@ export default function Home() {
   return (
     <>
       <FloatingWhatsapp />
-      
+
       {/* <FloatingBooking /> */}
       {/* landing */}
       <section className="relative flex h-[calc(90vh-128px)] w-full items-center justify-center">
@@ -67,13 +65,15 @@ export default function Home() {
         <Wrapper>
           {/* mobile */}
           <Image
+            loading="lazy"
             className="w-full lg:hidden h-[500px] object-cover "
             src={ImageRestaurant2}
             alt="Restaurante Dentro Mobile"
           />
           {/* destop */}
           <Image
-            className={cn("w-full hidden max-h-[430px] lg:block object-cover")}
+            loading="lazy"
+            className={"w-full hidden max-h-[430px] lg:block object-cover"}
             src={ImageRestaurant1}
             alt="Restaurante Dentro Desktop"
           />

@@ -46,9 +46,6 @@ export default async function Page() {
       <FloatingWhatsapp />
       <Wrapper className="flex flex-col">
         <Heading1>Carta</Heading1>
-        <Heading2 className="text-red-400 text-sm mt-2">
-          Brevemente estes preços serão atualizados.
-        </Heading2>
         <div className="flex flex-col gap-20 mt-10">
           {Object.entries(sortedProductsByCategory).map(
             ([category, products]: any) => (
