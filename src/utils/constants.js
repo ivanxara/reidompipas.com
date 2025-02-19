@@ -1,5 +1,7 @@
 import ImageMenuExecutivo from "@/assets/img/menu_executivo_webp.webp";
 import ImageMenuBanquete from "@/assets/img/menu_banquete_webp.webp";
+import ImageMenuCarnaval from "@/assets/img/carnaval.jpg";
+import ImageMenuDiaDaMulher from "@/assets/img/dia-da-mulher.jpg";
 
 export const CONTACTS = {
   PERSONAL: "+351912040915",
@@ -28,6 +30,20 @@ export const SOCIALS = {
 };
 
 export const EVENTS = [
+  {
+    label: "Menu Dia das Mulheres",
+    subLabel:
+      "🌸 Celebre o Dia da Mulher com um menu especial e DJ ao vivo! 🎶✨ Reserve já! 💖",
+    image: ImageMenuDiaDaMulher,
+    to: "/eventos/dia-das-mulheres",
+  },
+  {
+    label: "Menu Carnaval",
+    subLabel:
+      "🎭 Dia 4 de Março Venha festejar o Carnaval connosco com muita animação, boa comida e DJ ao vivo! 🔥",
+    image: ImageMenuCarnaval,
+    to: "/eventos/carnaval",
+  },
   {
     label: "Menu para Grupos",
     subLabel:

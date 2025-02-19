@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, CalendarDaysIcon } from "lucide-react";
+import { ArrowUpRight, CalendarDaysIcon, ChevronRight } from "lucide-react";
 import React, { useRef } from "react";
 import ImageRestaurant1 from "@/assets/img/restaurant_inside1_webp.webp";
 import ImageRestaurant2 from "@/assets/img/restaurant_inside2.webp";
@@ -24,6 +24,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase/client";
 import FloatingWhatsapp from "@/components/shared/floating-whatsapp";
 import { cn } from "@/lib/utils";
+import Confetti from "@/components/confeti";
 
 export default function Home() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -50,14 +51,41 @@ export default function Home() {
       {/* <FloatingBooking /> */}
       {/* landing */}
       <section className="relative flex h-[calc(90vh-128px)] w-full items-center justify-center">
-        <div className="mb-32 flex flex-col items-center font-bellagia ">
+        <div className="mb-32 flex flex-col items-center">
           {/* <Image src={Pipas} width={120} alt="rei dom pipas" /> */}
-          <h1 className="text-md text-center font-light uppercase md:text-lg">
+          <h1 className="font-bellagia text-md text-center font-light uppercase md:text-lg">
             Restaurante
           </h1>
-          <h1 className="text-center text-4xl font-light uppercase tracking-[-0.1rem] md:text-6xl">
+          <h1 className="font-bellagia text-center text-4xl font-light uppercase tracking-[-0.1rem] md:text-6xl">
             Rei Dom Pipas
           </h1>
+          <div className="mt-10">
+            <Heading2 className="uppercase text-base text-center pb-4">
+              Eventos atuais
+            </Heading2>
+            <div className="gap-4 flex flex-col md:flex-row">
+              <Link href="/eventos/carnaval">
+                <button className="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-yellow-500 py-1 pl-6 pr-14 font-medium text-neutral-50">
+                  <span className="z-10 pr-2">Dia de Carnaval</span>
+                  <div className="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-yellow-400 transition-[width] group-hover:w-[calc(100%-8px)]">
+                    <div className="mr-2.5 flex items-center justify-center">
+                      <ChevronRight />
+                    </div>
+                  </div>
+                </button>
+              </Link>
+              <Link href="/eventos/dia-das-mulheres">
+                <button className="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-pink-500 py-1 pl-6 pr-14 font-medium text-neutral-50">
+                  <span className="z-10 pr-2">Dia das Mulheres</span>
+                  <div className="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-pink-400 transition-[width] group-hover:w-[calc(100%-8px)]">
+                    <div className="mr-2.5 flex items-center justify-center">
+                      <ChevronRight />
+                    </div>
+                  </div>
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
       <section className="flex flex-col gap-20 md:gap-28">
