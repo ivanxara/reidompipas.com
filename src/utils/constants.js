@@ -33,7 +33,7 @@ export const EVENTS = [
   {
     label: "Menu Dia das Mulheres",
     subLabel:
-      "🌸 Celebre o Dia da Mulher com um menu especial e DJ ao vivo! 🎶✨ Reserve já! 💖",
+      "🌸 Dia 8 Celebre o Dia da Mulher com um menu especial e DJ ao vivo! 🎶✨ Reserve já! 💖",
     image: ImageMenuDiaDaMulher,
     to: "/eventos/dia-das-mulheres",
   },
