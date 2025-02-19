@@ -39,8 +39,6 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      {!open && <Confetti />}
-
       <Wrapper
         className={cn(
           "top-0 sticky z-50 flex flex-col items-center py-6 lg:py-10",

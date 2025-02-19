@@ -48,6 +48,8 @@ export default function Home() {
     <>
       <FloatingWhatsapp />
 
+      <Confetti />
+
       {/* <FloatingBooking /> */}
       {/* landing */}
       <section className="relative flex h-[calc(90vh-128px)] w-full items-center justify-center">
@@ -73,8 +75,6 @@ export default function Home() {
                     </div>
                   </div>
                 </button>
-
-                
               </Link>
               <Link href="/eventos/dia-das-mulheres">
                 <button className="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-pink-500 py-1 pl-6 pr-14 font-medium text-neutral-50">
