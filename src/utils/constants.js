@@ -31,18 +31,18 @@ export const SOCIALS = {
 
 export const EVENTS = [
   {
-    label: "Menu Dia das Mulheres",
-    subLabel:
-      "🌸 Dia 8 Celebre o Dia da Mulher com um menu especial e DJ ao vivo! 🎶✨ Reserve já! 💖",
-    image: ImageMenuDiaDaMulher,
-    to: "/eventos/dia-das-mulheres",
-  },
-  {
     label: "Menu Carnaval",
     subLabel:
       "🎭 Dia 4 de Março Venha festejar o Carnaval connosco com muita animação, boa comida e DJ ao vivo! 🔥",
     image: ImageMenuCarnaval,
     to: "/eventos/carnaval",
+  },
+  {
+    label: "Menu Dia das Mulheres",
+    subLabel:
+      "🌸 Dia 8 Celebre o Dia da Mulher com um menu especial e DJ ao vivo! 🎶✨ Reserve já! 💖",
+    image: ImageMenuDiaDaMulher,
+    to: "/eventos/dia-das-mulheres",
   },
   {
     label: "Menu para Grupos",
