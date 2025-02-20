@@ -16,7 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
 import { ArrowUpRight, ScrollText, Star } from "lucide-react";
-import FloatingWhatsapp from "@/components/shared/floating-whatsapp";
+
 import Link from "next/link";
 
 export default async function Page() {
@@ -54,7 +54,6 @@ export default async function Page() {
 
   return (
     <>
-      <FloatingWhatsapp />
       <Wrapper className="flex flex-col">
         {/* Heading */}
         <Heading1>Menu Executivo</Heading1>

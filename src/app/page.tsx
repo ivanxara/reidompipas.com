@@ -22,7 +22,7 @@ import CardEvent from "@/components/shared/card-event";
 import FloatingBooking from "@/components/shared/floating-booking";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase/client";
-import FloatingWhatsapp from "@/components/shared/floating-whatsapp";
+
 import { cn } from "@/lib/utils";
 import Confetti from "@/components/confeti";
 
@@ -46,7 +46,7 @@ export default function Home() {
 
   return (
     <>
-      <FloatingWhatsapp />
+      
 
       <Confetti />
 

@@ -28,7 +28,7 @@ import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { date, time } from "@/utils/generic";
 import { CONTACTS, WHATSAPP } from "@/utils/constants";
-import FloatingWhatsapp from "@/components/shared/floating-whatsapp";
+
 
 const formSchemaReservation = z.object({
   date: z

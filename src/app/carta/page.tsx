@@ -6,7 +6,7 @@ import Footer from "@/components/layout/footer";
 import { arr } from "@/utils/generic";
 import { MENUS } from "@/utils/constants";
 import { createClient } from "@/lib/supabase/server";
-import FloatingWhatsapp from "@/components/shared/floating-whatsapp";
+
 
 export default async function Page() {
   const supabase = await createClient();
@@ -43,7 +43,7 @@ export default async function Page() {
 
   return (
     <>
-      <FloatingWhatsapp />
+      
       <Wrapper className="flex flex-col">
         <Heading1>Carta</Heading1>
         <div className="flex flex-col gap-20 mt-10">
