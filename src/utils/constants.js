@@ -33,7 +33,7 @@ export const EVENTS = [
   {
     label: "Menu Carnaval",
     subLabel:
-      "🎭 Dia 3 de Março Venha festejar o Carnaval connosco com muita animação, boa comida e DJ ao vivo! 🔥",
+      "🎭 Dia 3 de Março Venha festejar a noite de Carnaval connosco com muita animação, boa comida e DJ ao vivo! 🔥",
     image: ImageMenuCarnaval,
     to: "/eventos/carnaval",
   },
