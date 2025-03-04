@@ -23,8 +23,6 @@ import FloatingBooking from "@/components/shared/floating-booking";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase/client";
 
-import { cn } from "@/lib/utils";
-import Confetti from "@/components/confeti";
 
 export default function Home() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -46,9 +44,7 @@ export default function Home() {
 
   return (
     <>
-      
 
-      <Confetti />
 
       {/* <FloatingBooking /> */}
       {/* landing */}
@@ -66,16 +62,7 @@ export default function Home() {
               Eventos atuais
             </Heading2>
             <div className="gap-4 flex flex-col md:flex-row">
-              <Link href="/eventos/carnaval">
-                <button className="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-yellow-500 py-1 pl-6 pr-14 font-medium text-neutral-50">
-                  <span className="z-10 pr-2">Dia de Carnaval</span>
-                  <div className="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-yellow-400 transition-[width] group-hover:w-[calc(100%-8px)]">
-                    <div className="mr-2.5 flex items-center justify-center">
-                      <ChevronRight />
-                    </div>
-                  </div>
-                </button>
-              </Link>
+
               <Link href="/eventos/dia-das-mulheres">
                 <button className="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-pink-500 py-1 pl-6 pr-14 font-medium text-neutral-50">
                   <span className="z-10 pr-2">Dia das Mulheres</span>

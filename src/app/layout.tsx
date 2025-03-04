@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { fonts } from "@/assets/fonts/fonts";
 import ReactQueryProvider from "@/providers/react-query";
 import { Analytics } from "@vercel/analytics/react";
-import Confetti from "@/components/confeti";
 import FloatingWhatsapp from "@/components/shared/floating-whatsapp";
 
 const inter = Inter({ subsets: ["latin"] });

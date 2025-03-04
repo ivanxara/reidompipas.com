@@ -13,7 +13,6 @@ import LogoInstagram from "../shared/logo-instagram";
 import LogoFacebook from "../shared/logo-facebook";
 import Heading1 from "../ui/heading-1";
 import { SOCIALS } from "@/utils/constants";
-import Confetti from "../confeti";
 
 const routes = [
   { name: "Inicio", url: "/" },

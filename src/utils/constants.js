@@ -31,13 +31,6 @@ export const SOCIALS = {
 
 export const EVENTS = [
   {
-    label: "Menu Carnaval",
-    subLabel:
-      "🎭 Dia 3 de Março Venha festejar a noite de Carnaval connosco com muita animação, boa comida e DJ ao vivo! 🔥",
-    image: ImageMenuCarnaval,
-    to: "/eventos/carnaval",
-  },
-  {
     label: "Menu Dia das Mulheres",
     subLabel:
       "🌸 Dia 8 Celebre o Dia da Mulher com um menu especial e DJ ao vivo! 🎶✨ Reserve já! 💖",
