@@ -57,24 +57,6 @@ export default function Home() {
           <h1 className="font-bellagia text-center text-4xl font-light uppercase tracking-[-0.1rem] md:text-6xl">
             Rei Dom Pipas
           </h1>
-          <div className="mt-10">
-            <Heading2 className="uppercase text-base text-center pb-4">
-              Eventos atuais
-            </Heading2>
-            <div className="gap-4 flex flex-col md:flex-row">
-
-              <Link href="/eventos/dia-das-mulheres">
-                <button className="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-pink-500 py-1 pl-6 pr-14 font-medium text-neutral-50">
-                  <span className="z-10 pr-2">Dia das Mulheres</span>
-                  <div className="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-pink-400 transition-[width] group-hover:w-[calc(100%-8px)]">
-                    <div className="mr-2.5 flex items-center justify-center">
-                      <ChevronRight />
-                    </div>
-                  </div>
-                </button>
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
       <section className="flex flex-col gap-20 md:gap-28">
