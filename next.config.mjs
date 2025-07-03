@@ -9,6 +9,15 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/qrcode",
+        destination: "/carta",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
