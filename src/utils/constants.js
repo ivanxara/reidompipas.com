@@ -1,7 +1,5 @@
 import ImageMenuExecutivo from "@/assets/img/menu_executivo_webp.webp";
 import ImageMenuBanquete from "@/assets/img/menu_banquete_webp.webp";
-import ImageMenuCarnaval from "@/assets/img/carnaval.jpg";
-import ImageMenuDiaDaMulher from "@/assets/img/dia-da-mulher.jpg";
 
 export const CONTACTS = {
   PERSONAL: "+351912040915",
