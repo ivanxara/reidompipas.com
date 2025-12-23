@@ -45,7 +45,6 @@ export default async function Page() {
     <>
       <Wrapper className="flex flex-col">
         <Heading1>Carta</Heading1>
-        <span className="text-destructive text-sm opacity-70">Preços em atualização</span>
         <div className="flex flex-col gap-20 mt-10">
           {Object.entries(sortedProductsByCategory).map(
             ([category, products]: any) => (
