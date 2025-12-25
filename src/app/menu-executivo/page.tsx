@@ -114,8 +114,13 @@ export default async function Page() {
                     <div className="flex flex-col gap-1.5">
                       {/* @ts-ignore */}
                       {products[item.key].map((item: any, index: number) => (
-                        <span key={index}>{item.products.name}</span>
+                        <span key={index}>
+                          {item.products.name === "Picanha"
+                            ? "Picanha (15€)"
+                            : item.products.name}
+                        </span>
                       ))}
+
                       {/* <span className="text-xs">- {item.price} €</span> */}
                     </div>
                   </div>
