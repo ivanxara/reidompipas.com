@@ -99,8 +99,8 @@ export default async function Page() {
               {/* <Heading2 className="flex items-center gap-2">Menu</Heading2> */}
               <div className="flex flex-col mt-4 md:flex-row-reverse md:justify-end md:gap-x-40 gap-y-10">
                 {[
-                  { label: "Especial", price: "11.50", key: "true" },
-                  { label: "Económico", price: "8.50", key: "false" },
+                  { label: "Especial", price: "12.00", key: "true" },
+                  { label: "Económico", price: "9.00", key: "false" },
                 ].map((item, index) => (
                   <div key={index} className="flex flex-col gap-2">
                     <Heading2 className="flex  items-center gap-2">
