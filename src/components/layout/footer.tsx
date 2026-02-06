@@ -69,6 +69,21 @@ export default function Footer() {
                   Ver no Mapa
                 </Button>
               </Link>
+              <div className="flex flex-wrap gap-3 pt-2">
+                <Link
+                  href="/oliveira-de-azemeis"
+                  className="underline underline-offset-2 hover:text-primary transition-colors"
+                >
+                  Restaurante em Oliveira de Azeméis
+                </Link>
+                <span className="text-secondary/30">•</span>
+                <Link
+                  href="/sao-joao-da-madeira"
+                  className="underline underline-offset-2 hover:text-primary transition-colors"
+                >
+                  Restaurante perto de São João da Madeira
+                </Link>
+              </div>
             </div>
           </div>
 

@@ -18,6 +18,25 @@ import { InstagramLogoIcon } from "@radix-ui/react-icons";
 import { ArrowUpRight, ScrollText, Star } from "lucide-react";
 
 import Link from "next/link";
+import type { Metadata } from "next";
+import Script from "next/script";
+import { faqPage } from "@/app/_seo/schema";
+
+export const metadata: Metadata = {
+  title: "Menu Executivo",
+  description:
+    "Menu executivo com diárias ao almoço em Oliveira de Azeméis. Pratos do dia atualizados.",
+  keywords: [
+    "menu executivo",
+    "diárias",
+    "almoço",
+    "Oliveira de Azeméis",
+    "restaurante",
+  ],
+  alternates: {
+    canonical: "/menu-executivo",
+  },
+};
 
 export default async function Page() {
   const supabase = await createClient();
@@ -54,6 +73,28 @@ export default async function Page() {
 
   return (
     <>
+      <Script id="ldjson-faq-menu-executivo" type="application/ld+json" strategy="beforeInteractive">
+        {JSON.stringify(
+          faqPage([
+            {
+              question: "O que inclui o Menu Executivo?",
+              answer: "Inclui Couvert, Sopa, Prato, Bebida e Café.",
+            },
+            {
+              question: "Em que dias há Menu Executivo?",
+              answer: "Servido em dias úteis ao almoço. Ao fim de semana não está disponível.",
+            },
+            {
+              question: "Como vejo os pratos do dia?",
+              answer: "Consulte os nossos Instagram Stories e a página do Menu Executivo.",
+            },
+            {
+              question: "Posso reservar mesa?",
+              answer: "Sim, pode solicitar reserva via WhatsApp na página de Reservas.",
+            },
+          ])
+        )}
+      </Script>
       <Wrapper className="flex flex-col py-12 lg:py-20 min-h-screen">
         {/* Header */}
         <PageHeader subtitle="Almoço" title="Menu Executivo">

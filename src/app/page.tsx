@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronRight, ArrowRight, Crown } from "lucide-react";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import React from "react";
 import ImageRestaurant1 from "@/assets/img/IMG_1487.webp";
 import ImageRestaurant2 from "@/assets/img/IMG_1533.webp";
@@ -64,11 +64,25 @@ export default function Home() {
                     <span className="text-5xl md:text-8xl">Rei</span>
                     <motion.div
                       initial={{ opacity: 0, rotate: -45, scale: 0.5 }}
-                      animate={{ opacity: 1, rotate: -12, scale: 1 }}
+                      animate={{ opacity: 1, rotate: -25, scale: 1 }}
                       transition={{ delay: 0.5, duration: 0.5, type: "spring" }}
-                      className="absolute -top-3 -left-1 text-primary"
+                      className="absolute -top-2 md:-top-3.5 -left-1 md:-left-1.5 text-primary"
                     >
-                      <Crown className="size-6 md:size-9 fill-current stroke-secondary" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="current"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="icon icon-tabler fill-current stroke-secondary size-7 md:size-12"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+
+                        {/* crown body – taller + slimmer base */}
+                        <path d="M12 4.6l3.6 6.1l4.9-3.4l-1.7 8.7H5.2L3.5 7.3l4.9 3.4L12 4.6z" />
+                      </svg>
                     </motion.div>
                   </div>
                   <span className="block text-5xl md:text-7xl mt-2">

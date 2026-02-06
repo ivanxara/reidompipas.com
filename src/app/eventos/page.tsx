@@ -1,9 +1,24 @@
-"use client";
-
 import Wrapper from "@/components/layout/wrapper";
 import { EVENTS } from "@/utils/constants";
 import CardEvent from "@/components/shared/card-event";
 import PageHeader from "@/components/shared/page-header";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Eventos",
+  description:
+    "Organizamos eventos, casamentos e celebrações com menus especiais em Oliveira de Azeméis.",
+  keywords: [
+    "eventos",
+    "casamentos",
+    "celebrações",
+    "Oliveira de Azeméis",
+    "restaurante",
+  ],
+  alternates: {
+    canonical: "/eventos",
+  },
+};
 
 export default function Page() {
   return (

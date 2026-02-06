@@ -6,6 +6,17 @@ import Footer from "@/components/layout/footer";
 import { arr } from "@/utils/generic";
 import { MENUS } from "@/utils/constants";
 import { createClient } from "@/lib/supabase/server";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Carta",
+  description:
+    "Explore a nossa carta com pratos tradicionais portugueses. Opções para todos os gostos.",
+  keywords: ["carta", "menu", "pratos", "restaurante", "Oliveira de Azeméis"],
+  alternates: {
+    canonical: "/carta",
+  },
+};
 
 export default async function Page() {
   const supabase = await createClient();
