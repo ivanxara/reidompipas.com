@@ -1,11 +1,11 @@
 "use client";
 
+import React from "react";
+import { useRouter } from "next/navigation";
+import { ChevronLeft, Download } from "lucide-react";
+
 import Wrapper from "@/components/layout/wrapper";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft } from "lucide-react";
-import { useRouter } from "next/navigation";
-import React from "react";
-import Heading1 from "../ui/heading-1";
 import Heading2 from "../ui/heading-2";
 
 export default function EventMenu({
@@ -16,32 +16,59 @@ export default function EventMenu({
   src: string;
 }) {
   const router = useRouter();
+
   return (
     <div className="w-full">
       <Wrapper>
-        <Button variant="capsule" onClick={() => router.back()}>
-          <ChevronLeft className="size-4" />
+        {/* Top navigation */}
+        <Button
+          variant="capsule"
+          size="lg"
+          onClick={() => router.back()}
+          className="flex items-center gap-2"
+          aria-label="Voltar à página anterior"
+        >
+          <ChevronLeft className="size-5" />
           <span>Voltar</span>
         </Button>
-        <div className="flex flex-col">
-          <Heading2 className="mt-4">{title}</Heading2>
-          <span className="text-xs text-muted-foreground">
-            Se o PDF não estiver disponível ou não mostrar todas as páginas,
-            clique no botão para descarregar o menu.
-          </span>
-          <Button className="mt-2 w-fit">
-            <a href={src} download>
-              Download PDF
+
+        {/* Header */}
+        <div className="mt-6 flex flex-col gap-3">
+          <Heading2>{title}</Heading2>
+
+          <p className="text-sm sm:text-base text-muted-foreground max-w-prose">
+            Se o menu não abrir corretamente ou não mostrar todas as páginas no
+            seu telemóvel, utilize o botão abaixo para descarregar o PDF.
+          </p>
+
+          {/* Download button – primary action */}
+          <Button
+            size="lg"
+            className="w-full sm:w-fit flex items-center gap-2"
+            aria-label="Descarregar menu em PDF"
+          >
+            <a href={src} download className="flex items-center gap-2">
+              <Download className="size-5" />
+              Descarregar menu em PDF
             </a>
           </Button>
         </div>
       </Wrapper>
-      <iframe
-        className="w-full h-[100vh] sm:h-screen mt-4"
-        src={src}
-        title="PDF Viewer"
-        aria-label="PDF Viewer for the executive menu"
-      />
+
+      {/* PDF Viewer */}
+      <div className="mt-6 w-full">
+        <iframe
+          src={src}
+          title="Visualização do menu em PDF"
+          className="
+            w-full
+            h-[80vh]
+            sm:h-screen
+            border-t
+            border-border
+          "
+        />
+      </div>
     </div>
   );
 }

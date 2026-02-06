@@ -5,6 +5,9 @@ import React from "react";
 
 export default function Page() {
   return (
-    <EventMenu title="Menu Dia das Mulheres" src="/files/mulher2026.pdf" />
+    <EventMenu
+      title="Menu Dia das Mulheres"
+      src="/files/dia-das-mulheres-2025.pdf"
+    />
   );
 }
