@@ -21,6 +21,8 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase/client";
 import Confetti from "@/components/confeti";
 import { motion } from "framer-motion";
+import Script from "next/script";
+import { breadcrumbList } from "@/app/_seo/schema";
 
 export default function Home() {
   const queryProducts = useQuery({
@@ -38,6 +40,11 @@ export default function Home() {
 
   return (
     <>
+      <Script id="ldjson-breadcrumb-home" type="application/ld+json" strategy="beforeInteractive">
+        {JSON.stringify(
+          breadcrumbList([{ name: "Início", item: "https://reidompipas.com/" }])
+        )}
+      </Script>
       <Confetti />
 
       <div className="py-16">
@@ -55,7 +62,7 @@ export default function Home() {
                 <div className="flex items-center gap-4">
                   <span className="h-px w-12 bg-secondary/30"></span>
                   <span className="font-bellagia text-sm tracking-[0.25em] text-secondary/60 uppercase">
-                    Est. 2003
+                    Desde 2003
                   </span>
                 </div>
 

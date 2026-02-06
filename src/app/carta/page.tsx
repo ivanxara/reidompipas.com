@@ -7,6 +7,8 @@ import { arr } from "@/utils/generic";
 import { MENUS } from "@/utils/constants";
 import { createClient } from "@/lib/supabase/server";
 import type { Metadata } from "next";
+import Script from "next/script";
+import { breadcrumbList } from "@/app/_seo/schema";
 
 export const metadata: Metadata = {
   title: "Carta",
@@ -53,6 +55,18 @@ export default async function Page() {
 
   return (
     <>
+      <Script
+        id="ldjson-breadcrumb-carta"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+      >
+        {JSON.stringify(
+          breadcrumbList([
+            { name: "Início", item: "https://reidompipas.com/" },
+            { name: "Carta", item: "https://reidompipas.com/carta" },
+          ])
+        )}
+      </Script>
       <Wrapper className="flex flex-col py-12 lg:py-20">
         <PageHeader
           subtitle="O Nosso Menu"

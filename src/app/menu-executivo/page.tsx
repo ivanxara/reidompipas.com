@@ -3,7 +3,7 @@ import PageHeader from "@/components/shared/page-header";
 import Heading2 from "@/components/ui/heading-2";
 import Footer from "@/components/layout/footer";
 import { arr, date } from "@/utils/generic";
-import { MENUS, SOCIALS } from "@/utils/constants";
+import { MENUS, SOCIALS, CONTACTS, WHATSAPP } from "@/utils/constants";
 import { createClient } from "@/lib/supabase/server";
 import {
   Card,
@@ -21,6 +21,13 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { faqPage } from "@/app/_seo/schema";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import FaqCollapsible from "@/components/shared/faq-collapsible";
+import { FAQ_GLOBAL } from "@/utils/constants";
 
 export const metadata: Metadata = {
   title: "Menu Executivo",
@@ -73,27 +80,12 @@ export default async function Page() {
 
   return (
     <>
-      <Script id="ldjson-faq-menu-executivo" type="application/ld+json" strategy="beforeInteractive">
-        {JSON.stringify(
-          faqPage([
-            {
-              question: "O que inclui o Menu Executivo?",
-              answer: "Inclui Couvert, Sopa, Prato, Bebida e Café.",
-            },
-            {
-              question: "Em que dias há Menu Executivo?",
-              answer: "Servido em dias úteis ao almoço. Ao fim de semana não está disponível.",
-            },
-            {
-              question: "Como vejo os pratos do dia?",
-              answer: "Consulte os nossos Instagram Stories e a página do Menu Executivo.",
-            },
-            {
-              question: "Posso reservar mesa?",
-              answer: "Sim, pode solicitar reserva via WhatsApp na página de Reservas.",
-            },
-          ])
-        )}
+      <Script
+        id="ldjson-faq-menu-executivo"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+      >
+        {JSON.stringify(faqPage(FAQ_GLOBAL))}
       </Script>
       <Wrapper className="flex flex-col py-12 lg:py-20 min-h-screen">
         {/* Header */}
@@ -129,14 +121,14 @@ export default async function Page() {
           </Link>
         </div>
 
-        {["Sunday", "Saturday"].includes(date.getWeekDay(new Date())) ? (
+        {["Sunday"].includes(date.getWeekDay(new Date())) ? (
           <div className="max-w-2xl mx-auto text-center flex flex-col items-center gap-8 p-12 border border-secondary/10 rounded-2xl bg-secondary/5">
             <Heading2 className="font-bellagia text-3xl">
               Fim de semana
             </Heading2>
             <span className="text-secondary/70 font-inter font-light text-lg leading-relaxed">
-              Durante o fim de semana não servimos o menu executivo. Aproveite
-              para descobrir novas e deliciosas opções na nossa carta.
+              Ao domingo não servimos o menu executivo. Aproveite para descobrir
+              novas e deliciosas opções na nossa carta.
             </span>
             <Link href="/carta">
               <Button className="rounded-full px-8 h-12 bg-secondary text-white hover:bg-secondary/90 transition-all shadow-lg hover:shadow-xl hover:scale-105">

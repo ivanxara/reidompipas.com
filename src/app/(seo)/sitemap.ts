@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/santa-maria-da-feira",
     "/vale-de-cambra",
     "/ovar",
+    "/faq",
   ];
 
   return routes.map((path) => ({

@@ -29,6 +29,38 @@ export const SOCIALS = {
   INSTAGRAM: "https://www.instagram.com/reidompipas",
 };
 
+export const FAQ_GLOBAL = [
+  {
+    question: "Como posso fazer uma reserva?",
+    answer:
+      "Pode fazer a sua reserva através da página de Reservas, por mensagem no telemóvel, Instagram ou Facebook, ou simplesmente ligando-nos.",
+  },
+  {
+    question: "O que inclui o Menu Executivo?",
+    answer: "Inclui couvert, sopa, prato, bebida e café.",
+  },
+  {
+    question: "Onde posso ver o Menu Executivo?",
+    answer:
+      "O Menu Executivo pode ser consultado diariamente nos nossos stories do Instagram ou aqui no site, na página “Menu Executivo”.",
+  },
+  {
+    question: "Há Menu Executivo ao fim de semana?",
+    answer:
+      "O Menu Executivo é servido nos dias úteis ao almoço e também ao sábado ao almoço.",
+  },
+  {
+    question: "Qual é o horário de funcionamento?",
+    answer:
+      "Estamos abertos todos os dias das 12:00 às 15:00. À sexta e sábado, reabrimos das 19:30 às 23:00.",
+  },
+  {
+    question: "Têm serviço de takeaway ou delivery?",
+    answer:
+      "Sim. Pode encomendar diretamente connosco ou através de plataformas parceiras como Uber Eats, Glovo e Bolt Food.",
+  },
+];
+
 export const EVENTS = [
   {
     label: "Menu Carnaval",

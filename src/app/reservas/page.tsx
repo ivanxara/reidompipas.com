@@ -29,6 +29,8 @@ import { date, time } from "@/utils/generic";
 import { WHATSAPP } from "@/utils/constants";
 import PageHeader from "@/components/shared/page-header";
 import { motion } from "framer-motion";
+import Script from "next/script";
+import { breadcrumbList } from "@/app/_seo/schema";
 
 const formSchemaReservation = z.object({
   date: z
@@ -100,6 +102,18 @@ export default function Page() {
 
   return (
     <>
+      <Script
+        id="ldjson-breadcrumb-reservas"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+      >
+        {JSON.stringify(
+          breadcrumbList([
+            { name: "Início", item: "https://reidompipas.com/" },
+            { name: "Reservas", item: "https://reidompipas.com/reservas" },
+          ])
+        )}
+      </Script>
       <Wrapper className="flex flex-col py-12 lg:py-20 min-h-screen">
         {/* Header */}
         <PageHeader
