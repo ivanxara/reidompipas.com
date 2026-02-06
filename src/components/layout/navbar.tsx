@@ -3,121 +3,165 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Pipas from "@/assets/img/logo_pipas.png";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
-import "@/assets/styles/navbar.css";
-
+import { usePathname } from "next/navigation";
 import Wrapper from "./wrapper";
 import { cn } from "@/lib/utils";
-import LogoInstagram from "../shared/logo-instagram";
-import LogoFacebook from "../shared/logo-facebook";
-import Heading1 from "../ui/heading-1";
-import { SOCIALS } from "@/utils/constants";
+import { Button } from "../ui/button";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const routes = [
   { name: "Inicio", url: "/" },
   { name: "Carta", url: "/carta" },
-  {
-    name: "Menu Executivo",
-    url: "/menu-executivo",
-  },
+  { name: "Menu Executivo", url: "/menu-executivo" },
   { name: "Eventos", url: "/eventos" },
-  { name: "Reservas", url: "/reservas" },
 ];
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    document.body.classList.toggle("no-scroll", open);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
 
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
     return () => {
-      document.body.classList.remove("no-scroll");
+      document.body.style.overflow = "unset";
     };
   }, [open]);
 
   return (
     <>
-      <Wrapper
+      <header
         className={cn(
-          "top-0 sticky z-50 flex flex-col items-center py-6 lg:py-10",
-          open ? "bg-secondary" : "bg-background"
+          "fixed top-0 left-0 w-full z-50 transition-all duration-300",
+          scrolled || open || pathname !== "/"
+            ? "bg-background/95 backdrop-blur-md shadow-sm py-4"
+            : "bg-transparent py-6"
         )}
       >
-        <div
-          className={cn(
-            "flex w-full justify-between items-center relative",
-            open && "sm:pr-4"
-          )}
-        >
-          <Link href="/">
-            <div className="flex items-center gap-2">
-              <Image src={Pipas} width={32} alt="rei dom pipas" />
+        <Wrapper className="flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="z-50 relative">
+            <div className="flex items-center gap-3">
+              <Image
+                src={Pipas}
+                width={40}
+                height={40}
+                alt="rei dom pipas"
+                className="w-8 h-8 md:w-10 md:h-10"
+              />
               <div
                 className={cn(
-                  "flex flex-col",
-                  open ? "text-primary-foreground" : "text-secondary"
+                  "flex flex-col transition-colors duration-300",
+                  open ? "text-secondary" : "text-secondary"
                 )}
               >
-                <h1 className="hidden whitespace-nowrap text-left font-bellagia text-xs font-light uppercase leading-none tracking-[0.05rem] md:block">
+                <h1 className="font-bellagia text-xs font-light uppercase leading-none tracking-[0.1em]">
                   Rei
                 </h1>
-                <h1 className="hidden whitespace-nowrap text-left font-bellagia font-light uppercase leading-none tracking-[0.05rem] md:block">
+                <h1 className="font-bellagia text-sm font-light uppercase leading-none tracking-[0.1em]">
                   Dom Pipas
                 </h1>
               </div>
             </div>
           </Link>
-          {/* menu icon */}
-          <button
-            className="absolute px-10 py-8 -right-5 z-10"
-            onClick={() => setOpen(!open)}
-          ></button>
-          <div className="relative group grid place-items-center">
-            <div className="w-10 pointer-events-none">
-              <div
-                className={`menu-icon group-active:scale-[90%] size-4 ${
-                  open ? "active" : ""
-                }`}
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {routes.map((route) => (
+              <Link
+                key={route.url}
+                href={route.url}
+                className={cn(
+                  "text-sm uppercase tracking-wider font-medium hover:text-primary transition-colors",
+                  pathname === route.url ? "text-primary" : "text-secondary/80"
+                )}
               >
-                <div>
-                  <span
-                    className={cn(
-                      open ? "active bg-primary-foreground" : "bg-secondary"
-                    )}
-                  ></span>
-                  <span
-                    className={cn(
-                      open ? "active bg-primary-foreground" : "bg-secondary"
-                    )}
-                  ></span>
-                </div>
-              </div>
-            </div>
+                {route.name}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Desktop Actions */}
+          <div className="hidden lg:flex items-center gap-4">
+            <Link href="/reservas">
+              <Button className="rounded-full px-6 bg-secondary text-white hover:bg-secondary/90">
+                Reservar
+              </Button>
+            </Link>
           </div>
-        </div>
-      </Wrapper>
-      {open && (
-        <div className="fixed top-0 z-40 h-full shadow-2xl w-full bg-secondary flex items-center text-primary-foreground">
-          {/* items */}
-          <Wrapper className="flex flex-col w-full">
-            <div className="flex flex-col items-center w-full divide-y">
-              {routes.map((item: any, index) => (
-                <Link
-                  key={index}
-                  href={item.url}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-between py-4 px-2 w-full hover:bg-primary text-center"
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="lg:hidden z-50 relative p-2 text-secondary hover:text-primary transition-colors"
+          >
+            {open ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </Wrapper>
+      </header>
+
+      {/* Spacer for fixed navbar on non-landing pages */}
+      {pathname !== "/" && <div className="h-[64px] lg:h-[72px]" />}
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-background flex flex-col pt-32 px-6"
+          >
+            <div className="flex flex-col items-center gap-8">
+              {routes.map((route, index) => (
+                <motion.div
+                  key={route.url}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.1 }}
                 >
-                  <Heading1 className="text-primary-foreground text-start">
-                    {item.name}
-                  </Heading1>
-                </Link>
+                  <Link
+                    href={route.url}
+                    onClick={() => setOpen(false)}
+                    className="font-bellagia text-3xl md:text-4xl text-secondary hover:text-primary transition-colors"
+                  >
+                    {route.name}
+                  </Link>
+                </motion.div>
               ))}
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="pt-8"
+              >
+                <Link href="/reservas" onClick={() => setOpen(false)}>
+                  <Button className="h-12 px-8 rounded-full text-lg bg-secondary text-white hover:bg-secondary/90">
+                    Reservar Mesa
+                  </Button>
+                </Link>
+              </motion.div>
             </div>
-          </Wrapper>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

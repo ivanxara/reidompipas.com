@@ -1,129 +1,142 @@
 import { cn } from "@/lib/utils";
-import { InstagramLogoIcon } from "@radix-ui/react-icons";
-import {
-  Clipboard,
-  FacebookIcon,
-  Mail,
-  Phone,
-  PhoneCall,
-  Send,
-} from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Phone, Clock } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import Wrapper from "./wrapper";
-import Image from "next/image";
 import { Button } from "../ui/button";
-import { CONTACTS, EMAIL, GOOGLE_MAPS } from "@/utils/constants";
+import { CONTACTS, EMAIL, GOOGLE_MAPS, SOCIALS } from "@/utils/constants";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "../ui/input";
-import CopyText from "../shared/copy-text";
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
 
-export default function Footer({ className }: any) {
   return (
-    <>
-      <Wrapper className={cn("py-20 md:py-28", className)}>
-        <div className="grid gap-y-4 xl:grid-flow-col text-secondary">
-          <div className="md:row-span-2 md:pr-28">
-            <div className="mb-10 flex max-h-10 gap-2">
-              <div className="">
-                <h1 className="font-bellagia text-2xl font-light uppercase tracking-[-0.05rem]">
-                  Rei
-                </h1>
-                <h1 className="md:text-3xlxl font-bellagia text-4xl font-light uppercase tracking-[-0.05rem]">
-                  Dom Pipas
-                </h1>
+    <footer className={cn("bg-neutral-50 border-t border-neutral-100")}>
+      <Wrapper className="py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Brand Section */}
+          <div className="flex flex-col gap-6">
+            <div className="space-y-1">
+              <h2 className="font-bellagia text-sm tracking-[0.2em] text-secondary/60 uppercase">
+                Restaurante
+              </h2>
+              <h1 className="font-bellagia text-3xl md:text-4xl text-secondary font-medium tracking-tight">
+                Rei Dom Pipas
+              </h1>
+            </div>
+            <p className="text-secondary/70 text-sm leading-relaxed max-w-xs font-light">
+              Tradição, sabor e hospitalidade em Oliveira de Azeméis há mais de
+              20 anos.
+            </p>
+            <div className="flex items-center gap-4">
+              <Link
+                href={SOCIALS.INSTAGRAM}
+                target="_blank"
+                className="p-2 rounded-full bg-white border border-secondary/10 hover:bg-secondary hover:text-white transition-colors group"
+              >
+                <Instagram className="w-5 h-5 text-secondary group-hover:text-white transition-colors" />
+              </Link>
+              <Link
+                href="https://www.facebook.com/ReiDomPipas"
+                target="_blank"
+                className="p-2 rounded-full bg-white border border-secondary/10 hover:bg-secondary hover:text-white transition-colors group"
+              >
+                <Facebook className="w-5 h-5 text-secondary group-hover:text-white transition-colors" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Location */}
+          <div className="flex flex-col gap-6">
+            <h3 className="font-bellagia text-lg text-secondary">
+              Localização
+            </h3>
+            <div className="flex flex-col gap-4 text-sm text-secondary/80 font-light">
+              <div className="flex gap-3 items-start">
+                <MapPin className="w-5 h-5 shrink-0 text-primary mt-0.5" />
+                <span className="leading-relaxed">
+                  R. dos Bombeiros Voluntários, Nº63 A<br />
+                  3720-216 Oliveira de Azeméis
+                  <br />
+                  Portugal
+                </span>
+              </div>
+              <Link href={GOOGLE_MAPS} target="_blank">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-fit rounded-full text-xs h-8 border-secondary/20 hover:border-secondary"
+                >
+                  Ver no Mapa
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Contacts */}
+          <div className="flex flex-col gap-6">
+            <h3 className="font-bellagia text-lg text-secondary">Contactos</h3>
+            <div className="flex flex-col gap-4 text-sm text-secondary/80 font-light">
+              <a
+                href={`tel:${CONTACTS.PERSONAL}`}
+                className="flex gap-3 items-center hover:text-primary transition-colors"
+              >
+                <Phone className="w-5 h-5 shrink-0 text-primary" />
+                <span>{CONTACTS.PERSONAL}</span>
+              </a>
+              <a
+                href={`tel:${CONTACTS.COMPANY}`}
+                className="flex gap-3 items-center hover:text-primary transition-colors"
+              >
+                <Phone className="w-5 h-5 shrink-0 text-primary" />
+                <span>{CONTACTS.COMPANY}</span>
+              </a>
+              <a
+                href={`mailto:${EMAIL}`}
+                className="flex gap-3 items-center hover:text-primary transition-colors"
+              >
+                <Mail className="w-5 h-5 shrink-0 text-primary" />
+                <span>{EMAIL}</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Hours */}
+          <div className="flex flex-col gap-6">
+            <h3 className="font-bellagia text-lg text-secondary">Horário</h3>
+            <div className="flex flex-col gap-4 text-sm text-secondary/80 font-light">
+              <div className="flex gap-3 items-start">
+                <Clock className="w-5 h-5 shrink-0 text-primary mt-0.5" />
+                <div className="space-y-2">
+                  <div>
+                    <span className="block font-medium text-secondary">
+                      Segunda a Domingo
+                    </span>
+                    <span>12:00 - 15:00</span>
+                  </div>
+                  <div>
+                    <span className="block font-medium text-secondary">
+                      Sexta e Sábado
+                    </span>
+                    <span>19:30 - 23:00</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="grid gap-8 gap-y-8 text-sm sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            <div className="flex flex-col">
-              <h2 className="mb-2 font-bold">Rei Dom Pipas</h2>
-              R. dos Bombeiros Voluntários, Nº63 A <br />
-              3720-216 Oliveira de Azeméis, Portugal
-              <div className="">
-                <Button className="mt-2" variant="capsule">
-                  <Link href={GOOGLE_MAPS}>Ver Mapa</Link>
-                </Button>
-              </div>
-            </div>
-            <div>
-              <div className="font-title text-headings mb-2 font-bold">
-                Aberto todos os dias
-              </div>
-              <div className="">
-                <ul>
-                  <li>Segunda-feira - Domingo: 12:00 - 15:00</li>
-                  <li>Sexta - Sábado: 19:30 - 23:00</li>
-                </ul>
-              </div>
-            </div>
+        </div>
 
-            <Dialog>
-              <DialogTrigger className="text-start items-start p-0 mb-2">
-                <div className="flex flex-col items-start justify-start">
-                  <h2 className="mb-2 font-bold">Contactos</h2>
-                  <a className=" underline underline-offset-2">
-                    {CONTACTS.PERSONAL}
-                    <span className="text-[10px]">
-                      {" "}
-                      (Chamada para rede fixa nacional)
-                    </span>
-                  </a>
-                  <a className=" underline underline-offset-2">
-                    {CONTACTS.COMPANY}
-                    <span className="text-[10px]">
-                      {" "}
-                      (Chamada para rede móvel nacional)
-                    </span>
-                  </a>
-                  <a className=" mt-2 underline underline-offset-2">{EMAIL}</a>
-                </div>
-              </DialogTrigger>
-              <DialogContent className="px-4">
-                <DialogHeader>
-                  <DialogTitle>Contactos</DialogTitle>
-                  <DialogDescription>
-                    Veja abaixo os nossos contactos e clique no ícone para
-                    copiar
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="flex flex-col gap-4">
-                  {[
-                    { text: CONTACTS.PERSONAL, href: "tel:", icon: PhoneCall },
-                    { text: CONTACTS.COMPANY, href: "tel:", icon: PhoneCall },
-                    { text: EMAIL, href: "mailto:", icon: Mail },
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center w-full gap-4">
-                      <div className="rounded-md w-full border border-input bg-primary-foreground px-3 py-2 text-sm relative flex items-center">
-                        {item.text}
-                        <button className="absolute right-3 flex items-center gap-2 text-xs">
-                          <Button
-                            size="xs"
-                            className="gap-2 text-xs sm:bg-transparent "
-                            variant="ghost"
-                          >
-                            <a href={`${item.href}${item.text}`}>
-                              <item.icon className="size-4" />
-                            </a>
-                          </Button>
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </DialogContent>
-            </Dialog>
+        <div className="mt-16 pt-8 border-t border-secondary/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-secondary/40 font-light">
+          <p>© {currentYear} Rei Dom Pipas. Todos os direitos reservados.</p>
+          <div className="flex gap-6">
+            <Link href="#" className="hover:text-secondary transition-colors">
+              Política de Privacidade
+            </Link>
+            <Link href="#" className="hover:text-secondary transition-colors">
+              Termos e Condições
+            </Link>
           </div>
         </div>
       </Wrapper>
-    </>
+    </footer>
   );
 }

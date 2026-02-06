@@ -29,6 +29,7 @@ export default function RootLayout({
           <FloatingWhatsapp />
           {children}
           <Analytics />
+          <Footer />
         </body>
       </html>
     </ReactQueryProvider>

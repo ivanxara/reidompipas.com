@@ -1,10 +1,9 @@
 "use client";
 
-import Footer from "@/components/layout/footer";
 import Wrapper from "@/components/layout/wrapper";
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
-import { ChevronRightIcon } from "lucide-react";
+import { ChevronRightIcon, Clock, Users, CalendarDays } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -27,8 +26,9 @@ import {
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { date, time } from "@/utils/generic";
-import { CONTACTS, WHATSAPP } from "@/utils/constants";
-
+import { WHATSAPP } from "@/utils/constants";
+import PageHeader from "@/components/shared/page-header";
+import { motion } from "framer-motion";
 
 const formSchemaReservation = z.object({
   date: z
@@ -100,135 +100,195 @@ export default function Page() {
 
   return (
     <>
-      <div id="page_top" className="absolute -top-20 bg-blue-400 p-20"></div>
-      <Wrapper className="pb-0">
-        <div className="bg-white px-4 py-8 rounded-xl w-full">
-          <div className="max-w-[276px] sm:max-w-screen-sm w-full mx-auto">
+      <Wrapper className="flex flex-col py-12 lg:py-20 min-h-screen">
+        {/* Header */}
+        <PageHeader
+          subtitle="Marcações"
+          title="Reservar Mesa"
+          description="Garanta o seu lugar à nossa mesa. Para grupos superiores a 6 pessoas, por favor contacte-nos diretamente."
+        />
+
+        <div className="w-full max-w-5xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+          <div className="bg-white border border-secondary/10 rounded-3xl p-8 md:p-12 shadow-xl shadow-secondary/5">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="flex flex-col sm:flex-row items-center sm:items-start gap-y-4"
+                className="grid lg:grid-cols-12 gap-12"
               >
-                <div className="w-full space-y-1">
+                {/* Date Selection - Left Column */}
+                <div className="lg:col-span-5 flex flex-col gap-6">
+                  <div className="flex items-center gap-3 border-b border-secondary/10 pb-4">
+                    <CalendarDays className="w-5 h-5 text-primary" />
+                    <h3 className="font-bellagia text-2xl text-secondary">
+                      Escolha a Data
+                    </h3>
+                  </div>
+
                   <FormField
                     control={form.control}
                     name="date"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Escolha um dia</FormLabel>
+                      <FormItem className="w-full">
                         <FormControl>
-                          <Calendar
-                            mode="single"
-                            selected={
-                              field.value ? new Date(field.value) : undefined
-                            }
-                            onSelect={(val) => {
-                              if (val)
-                                field.onChange(format(val, "yyyy-MM-dd"));
-                            }}
-                          />
+                          <div className="flex justify-center border border-secondary/10 rounded-2xl p-4 bg-secondary/5">
+                            <Calendar
+                              mode="single"
+                              selected={
+                                field.value ? new Date(field.value) : undefined
+                              }
+                              onSelect={(val) => {
+                                if (val)
+                                  field.onChange(format(val, "yyyy-MM-dd"));
+                              }}
+                              className="bg-transparent"
+                              classNames={{
+                                head_cell:
+                                  "text-secondary/60 font-inter font-normal text-[0.8rem]",
+                                cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-primary/5 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+                                day: "h-9 w-9 p-0 font-normal font-inter aria-selected:opacity-100 hover:bg-secondary/10 rounded-full transition-colors",
+                                day_selected:
+                                  "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+                                day_today: "bg-secondary/5 text-secondary",
+                              }}
+                            />
+                          </div>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
                 </div>
-                <div className="space-y-4 w-full">
-                  <div className="w-full space-y-1">
-                    <FormField
-                      control={form.control}
-                      name="time"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Hora</FormLabel>
-                          <FormControl>
-                            <Select
-                              {...field}
-                              onValueChange={(value) =>
-                                form.setValue("time", value)
-                              }
-                              value={field.value}
-                            >
-                              <SelectTrigger
-                                onPointerDown={() => {
-                                  console.log("run");
-                                  if (!form.watch("date")) {
-                                    form.setError("time", {
-                                      message:
-                                        "Por favor, selecione a data antes de escolher a hora",
-                                    });
-                                  }
-                                }}
-                                className="!ring-0"
+
+                {/* Vertical Divider */}
+                <div className="hidden lg:block lg:col-span-1 relative">
+                  <div className="absolute left-1/2 top-0 bottom-0 w-px bg-secondary/10 -translate-x-1/2"></div>
+                </div>
+
+                {/* Time & People - Right Column */}
+                <div className="lg:col-span-6 flex flex-col gap-10">
+                  <div className="space-y-8">
+                    {/* Time Selection */}
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3 border-b border-secondary/10 pb-4">
+                        <Clock className="w-5 h-5 text-primary" />
+                        <h3 className="font-bellagia text-2xl text-secondary">
+                          Hora
+                        </h3>
+                      </div>
+
+                      <FormField
+                        control={form.control}
+                        name="time"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Select
+                                {...field}
+                                onValueChange={(value) =>
+                                  form.setValue("time", value)
+                                }
+                                value={field.value}
                               >
-                                <SelectValue placeholder="Selecionar" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                {times.map((value: string, index: number) => (
-                                  <SelectItem key={index} value={value}>
-                                    {value}
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="w-full space-y-1">
-                    <FormField
-                      control={form.control}
-                      name="persons"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Número de pessoas</FormLabel>
-                          <FormControl>
-                            <Select
-                              {...field}
-                              onValueChange={(value) =>
-                                form.setValue("persons", value)
-                              }
-                              value={field.value}
-                            >
-                              <SelectTrigger className="!ring-0">
-                                <SelectValue placeholder="Selecionar" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                {Array.from({ length: 6 }, (_, i) => i + 1).map(
-                                  (number) => (
+                                <SelectTrigger
+                                  onPointerDown={() => {
+                                    if (!form.watch("date")) {
+                                      form.setError("time", {
+                                        message:
+                                          "Por favor, selecione a data antes de escolher a hora",
+                                      });
+                                    }
+                                  }}
+                                  className="h-14 rounded-xl border-secondary/20 bg-transparent text-lg focus:ring-0 focus:ring-offset-0"
+                                >
+                                  <SelectValue placeholder="Selecionar hora" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {times.length > 0 ? (
+                                    times.map((value: string, index: number) => (
+                                      <SelectItem key={index} value={value}>
+                                        {value}
+                                      </SelectItem>
+                                    ))
+                                  ) : (
+                                    <div className="p-4 text-sm text-secondary/50 text-center">
+                                      Selecione uma data primeiro
+                                    </div>
+                                  )}
+                                </SelectContent>
+                              </Select>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    {/* People Selection */}
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3 border-b border-secondary/10 pb-4">
+                        <Users className="w-5 h-5 text-primary" />
+                        <h3 className="font-bellagia text-2xl text-secondary">
+                          Pessoas
+                        </h3>
+                      </div>
+
+                      <FormField
+                        control={form.control}
+                        name="persons"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Select
+                                {...field}
+                                onValueChange={(value) =>
+                                  form.setValue("persons", value)
+                                }
+                                value={field.value}
+                              >
+                                <SelectTrigger className="h-14 rounded-xl border-secondary/20 bg-transparent text-lg focus:ring-0 focus:ring-offset-0">
+                                  <SelectValue placeholder="Número de pessoas" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {Array.from(
+                                    { length: 12 },
+                                    (_, i) => i + 1
+                                  ).map((number) => (
                                     <SelectItem
                                       key={number}
-                                      value={String(number)}
+                                      value={number.toString()}
                                     >
-                                      {number}
+                                      {number} {number === 1 ? "Pessoa" : "Pessoas"}
                                     </SelectItem>
-                                  )
-                                )}
-                              </SelectContent>
-                            </Select>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
                   </div>
-                  <Button type="submit" variant="capsuleBig" className="w-full">
-                    <span>Continuar</span>
-                    <ChevronRightIcon className="size-4 ml-2" />
-                  </Button>
-                  <FormDescription className="text-center text-xs">
-                    Ao clicar, será redirecionado para um chat no WhatsApp para
-                    continuar a sua reserva.
-                  </FormDescription>
+
+                  <div className="pt-4 mt-auto">
+                    <Button
+                      type="submit"
+                      className="w-full h-14 text-lg rounded-full bg-secondary text-white hover:bg-secondary/90 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                    >
+                      Solicitar Reserva via WhatsApp
+                      <ChevronRightIcon className="ml-2 h-5 w-5" />
+                    </Button>
+                    <p className="text-xs text-center text-secondary/40 mt-4 font-inter font-light">
+                      A sua reserva ficará pendente de confirmação pela nossa
+                      equipa.
+                    </p>
+                  </div>
                 </div>
               </form>
             </Form>
           </div>
         </div>
       </Wrapper>
-      <Footer />
     </>
   );
 }

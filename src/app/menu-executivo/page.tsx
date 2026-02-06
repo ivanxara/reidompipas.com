@@ -1,5 +1,5 @@
 import Wrapper from "@/components/layout/wrapper";
-import Heading1 from "@/components/ui/heading-1";
+import PageHeader from "@/components/shared/page-header";
 import Heading2 from "@/components/ui/heading-2";
 import Footer from "@/components/layout/footer";
 import { arr, date } from "@/utils/generic";
@@ -54,83 +54,121 @@ export default async function Page() {
 
   return (
     <>
-      <Wrapper className="flex flex-col">
-        {/* Heading */}
-        <Heading1>Menu Executivo</Heading1>
-        <Heading2 className="text-sm mt-2">
-          Esta página é atualizada diariamente, de segunda a sexta-feira, com os
-          pratos do dia. <br /> Última atualização:{" "}
-          {date.formatExtensive(updateDate)}
-        </Heading2>
-        {/* Instagram */}
-        <div className="flex flex-col gap-2 mt-10">
-          <Heading2>Instagram Stories</Heading2>
-          <span>
-            Também pode seguir-nos no Instagram, onde partilhamos diariamente os
-            pratos do dia nos stories.
-          </span>
+      <Wrapper className="flex flex-col py-12 lg:py-20 min-h-screen">
+        {/* Header */}
+        <PageHeader subtitle="Almoço" title="Menu Executivo">
+          <div className="flex items-center gap-4 mt-2">
+            <div className="h-px w-8 bg-secondary/20"></div>
+            <p className="font-inter text-secondary/60 text-sm uppercase tracking-widest">
+              {date.formatExtensive(updateDate)}
+            </p>
+            <div className="h-px w-8 bg-secondary/20"></div>
+          </div>
+        </PageHeader>
+
+        {/* Instagram Section (Top) */}
+        <div className="flex flex-col items-center gap-6 text-center mb-16 max-w-2xl mx-auto w-full animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+          <div className="flex flex-col gap-2">
+            <h3 className="font-bellagia text-2xl text-secondary">
+              Instagram Stories
+            </h3>
+            <p className="text-secondary/60 font-inter font-light">
+              Siga-nos para ver os pratos do dia em tempo real.
+            </p>
+          </div>
+
           <Link href={SOCIALS.INSTAGRAM} target="_blank">
-            <Button variant="capsule" className="w-fit">
-              <InstagramLogoIcon />
-              <span>Abrir Instagram</span>
+            <Button
+              variant="outline"
+              className="rounded-full px-8 h-12 border-secondary/20 text-secondary hover:bg-secondary hover:text-white transition-all gap-2 group"
+            >
+              <InstagramLogoIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <span>Ver Stories</span>
             </Button>
           </Link>
         </div>
+
         {["Sunday", "Saturday"].includes(date.getWeekDay(new Date())) ? (
-          <div className="mt-10 flex flex-col gap-1">
-            <Heading2>Fim de semana</Heading2>
-            <span>
+          <div className="max-w-2xl mx-auto text-center flex flex-col items-center gap-8 p-12 border border-secondary/10 rounded-2xl bg-secondary/5">
+            <Heading2 className="font-bellagia text-3xl">
+              Fim de semana
+            </Heading2>
+            <span className="text-secondary/70 font-inter font-light text-lg leading-relaxed">
               Durante o fim de semana não servimos o menu executivo. Aproveite
               para descobrir novas e deliciosas opções na nossa carta.
             </span>
-            <Link href="/carta" target="_blank">
-              <Button variant="capsule" className="w-fit">
-                <ScrollText className="size-4" strokeWidth={1.5} />
-                <span>Abrir Carta</span>
+            <Link href="/carta">
+              <Button className="rounded-full px-8 h-12 bg-secondary text-white hover:bg-secondary/90 transition-all shadow-lg hover:shadow-xl hover:scale-105">
+                <ScrollText className="size-4 mr-2" strokeWidth={1.5} />
+                <span>Ver Carta</span>
               </Button>
             </Link>
           </div>
         ) : (
-          <>
-            <Heading1 className="mt-10">
-              Couvert + Sopa + Prato + Bebida + Café
-            </Heading1>
-            <div className="mt-10">
-              {/* <Heading2 className="flex items-center gap-2">Menu</Heading2> */}
-              <div className="flex flex-col mt-4 md:flex-row-reverse md:justify-end md:gap-x-40 gap-y-10">
+          <div className="max-w-4xl mx-auto w-full animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+            {/* Banner Info */}
+            <div className="bg-secondary text-primary-foreground py-4 px-6 rounded-t-2xl text-center shadow-lg relative z-10">
+              <p className="font-bellagia text-lg md:text-xl tracking-wide font-light">
+                Couvert + Sopa + Prato + Bebida + Café
+              </p>
+            </div>
+
+            <div className="bg-white border border-secondary/10 border-t-0 rounded-b-2xl p-8 md:p-12 shadow-xl shadow-secondary/5">
+              <div className="grid md:grid-cols-2 gap-16 relative">
+                {/* Vertical Divider for Desktop */}
+                <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-secondary/10 to-transparent -translate-x-1/2"></div>
+
                 {[
                   { label: "Especial", price: "12.00", key: "true" },
                   { label: "Económico", price: "9.00", key: "false" },
                 ].map((item, index) => (
-                  <div key={index} className="flex flex-col gap-2">
-                    <Heading2 className="flex  items-center gap-2">
-                      {item.key === "true" && (
-                        <Star className="text-primary fill-primary size-4 mt-0.5" />
-                      )}
-                      <span>
-                        {item.label} - {item.price} €
+                  <div key={index} className="flex flex-col gap-6">
+                    <div className="flex items-center justify-between border-b border-secondary/10 pb-4">
+                      <div className="flex items-center gap-3">
+                        {item.key === "true" && (
+                          <Star className="text-primary fill-primary size-5" />
+                        )}
+                        <h3 className="font-bellagia text-2xl text-secondary">
+                          {item.label}
+                        </h3>
+                      </div>
+                      <span className="font-bellagia text-2xl text-secondary">
+                        {item.price}€
                       </span>
-                    </Heading2>
-                    <div className="flex flex-col gap-1.5">
-                      {/* @ts-ignore */}
-                      {products[item.key].map((item: any, index: number) => (
-                        <span key={index}>
-                          {item.products.name === "Picanha"
-                            ? "Picanha (15€)"
-                            : item.products.name}
-                        </span>
-                      ))}
+                    </div>
 
-                      {/* <span className="text-xs">- {item.price} €</span> */}
+                    <div className="flex flex-col gap-4 pl-2">
+                      {/* @ts-ignore */}
+                      {products[item.key] && products[item.key].length > 0 ? (
+                        // @ts-ignore
+                        products[item.key].map(
+                          (productItem: any, idx: number) => (
+                            <div
+                              key={idx}
+                              className="flex items-baseline gap-3 group"
+                            >
+                              <span className="h-1.5 w-1.5 min-w-[6px] rounded-full bg-primary/40 mt-2 group-hover:bg-primary transition-colors duration-300"></span>
+                              <span className="text-lg font-light text-secondary/80 group-hover:text-secondary transition-colors duration-300">
+                                {productItem.products.name === "Picanha"
+                                  ? "Picanha (15€)"
+                                  : productItem.products.name}
+                              </span>
+                            </div>
+                          )
+                        )
+                      ) : (
+                        <span className="text-secondary/40 italic font-light">
+                          Sem pratos disponíveis hoje.
+                        </span>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-          </>
+          </div>
         )}
       </Wrapper>
-      <Footer className="!pb-32" />
     </>
   );
 }

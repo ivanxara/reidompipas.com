@@ -11,56 +11,53 @@ const MenuBox = ({ product = {} }: any) => {
 
   return (
     <>
-      <div className="flex items-start gap-4 font-avenir font-light text-black">
+      <div className="flex items-start gap-4 font-inter text-secondary group">
         {product.image && (
           <Image
             draggable={false}
             alt={product.name}
             src={product.image}
-            width={56}
-            height={56}
-            className="aspect-square object-cover"
+            width={64}
+            height={64}
+            className="aspect-square object-cover rounded-md shadow-sm"
           />
         )}
-        <div className="w-full text-xs ">
+        <div className="w-full text-sm">
           {/* label and price */}
-          <div className="dots flex items-center justify-between gap-2">
-            <div className="relative flex w-full bg-inherit">
-              <span className="whitespace-nowrap bg-background pr-2">
+          <div className="dots flex items-end justify-between gap-2 relative">
+             <div className="relative flex w-full overflow-hidden items-baseline">
+              <span className="whitespace-nowrap bg-background pr-2 font-medium tracking-wide text-secondary/90 group-hover:text-primary transition-colors duration-300">
                 {product.name}
               </span>
-              {product.price && (
-                <div className="absolute z-[-1] flex h-full w-full items-end justify-end overflow-hidden tracking-[3px]">
-                  ................................................................................................................................................
-                </div>
-              )}
+              <span className="flex-grow border-b border-dotted border-secondary/30 mb-1.5 mx-1" />
             </div>
-            <div className="flex items-center gap-2.5">
-              <span className="w-10 whitespace-nowrap text-end">
-                {product.price ? `${product.price.toFixed(2)} €` : ``}
+            
+            <div className="flex items-center gap-3 bg-background pl-2 mb-0.5">
+              <span className="whitespace-nowrap text-end font-bellagia text-base text-secondary">
+                {product.price ? `${product.price.toFixed(2)}€` : ``}
               </span>
               {product.price2 && (
-                <span className="w-10 whitespace-nowrap text-end mr-[1px]">
-                  {product.price2 ? `${product.price2.toFixed(2)} €` : ``}
+                <span className="whitespace-nowrap text-end font-bellagia text-base text-secondary">
+                  {product.price2 ? `${product.price2.toFixed(2)}€` : ``}
                 </span>
               )}
             </div>
           </div>
           {/* description */}
           {product.desc && (
-            <div className="mt-1">
-              <span className="text-pretty text-black/70">{product.desc}</span>
+            <div className="mt-1.5">
+              <span className="text-sm text-secondary/60 font-light leading-relaxed">{product.desc}</span>
             </div>
           )}
           {/* tags */}
           {product.tags && (
             <Badge
-              variant="tag"
+              variant="outline"
               key={product.tags.name}
               className={cn(
-                "rounded-none p-0 px-2 text-[8px] font-light mt-1 text-white"
+                "rounded-full px-2 py-0 text-[10px] font-medium mt-2 border-primary/20 text-secondary/70 uppercase tracking-wider"
               )}
-              style={{ backgroundColor: product.tags.color }}
+              style={product.tags.color ? { borderColor: product.tags.color, color: product.tags.color } : {}}
             >
               {product.tags.name}
             </Badge>

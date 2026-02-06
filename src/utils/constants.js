@@ -33,28 +33,28 @@ export const EVENTS = [
   {
     label: "Menu Carnaval",
     subLabel:
-      "🎭 Dia 16 de Fevereiro venha festejar a noite de Carnaval connosco com muita animação, boa comida e DJ ao vivo! 🔥",
+      "A folia chega à mesa! Junte-se a nós dia 16 de Fevereiro para uma noite vibrante com sabores irresistíveis, animação contagiante e DJ ao vivo. A festa é garantida! 🎭🔥",
     image: ImageMenuCarnaval,
     to: "/eventos/carnaval",
   },
   {
-    label: "Menu Dia das Mulheres",
+    label: "Menu Dia da Mulher",
     subLabel:
-      "🌸 Dia 7 de Março celebre o Dia da Mulher com um menu especial e DJ ao vivo! 🎶✨ Reserve já! 💖",
+      "Uma homenagem à elegância e à força feminina. Dia 7 de Março, desfrute de um jantar exclusivo com ambiente sofisticado e música ao vivo. Uma noite para celebrar! 🌸✨",
     image: ImageMenuDiaDaMulher,
     to: "/eventos/dia-das-mulheres",
   },
   {
-    label: "Menu para Grupos",
+    label: "Grupos & Empresas",
     subLabel:
-      "Para aniversários, eventos corporativos e outras ocasiões especiais.",
+      "Crie memórias inesquecíveis. O cenário perfeito para jantares de equipa, celebrações de aniversário e convívios que merecem um toque de distinção.",
     image: ImageMenuExecutivo,
     to: "/eventos/executivo",
   },
   {
-    label: "Menu Banquete",
+    label: "Banquetes & Cerimónias",
     subLabel:
-      "Ideal para casamentos, batizados, comunhões e outras celebrações.",
+      "Momentos solenes merecem um serviço de excelência. Casamentos, batizados e comunhões com a tradição e requinte que a sua história merece.",
     image: ImageMenuBanquete,
     to: "/eventos/banquete",
   },

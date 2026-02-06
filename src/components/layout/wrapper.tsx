@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Wrapper({ children, className }: any) {
   return (
-    <div className={cn("px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20", className)}>
+    <div className={cn("px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1400px] mx-auto w-full", className)}>
       {children}
     </div>
   );
