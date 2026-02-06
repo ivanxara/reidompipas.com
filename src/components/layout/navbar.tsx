@@ -122,13 +122,17 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-background flex flex-col pt-32 px-6"
+            className="fixed inset-0 z-40"
           >
-            <div className="flex flex-col items-center gap-8">
+            {/* Backdrop Blur Layer */}
+            <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" />
+
+            {/* Menu Content */}
+            <div className="relative flex flex-col items-center justify-center min-h-screen gap-8 px-6">
               {routes.map((route, index) => (
                 <motion.div
                   key={route.url}
@@ -150,10 +154,9 @@ const Navbar: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="pt-8"
               >
                 <Link href="/reservas" onClick={() => setOpen(false)}>
-                  <Button className="h-12 px-8 rounded-full text-lg bg-secondary text-white hover:bg-secondary/90">
+                  <Button className="p-8 rounded-full text-lg bg-secondary text-white hover:bg-secondary/90 font-bellagia">
                     Reservar Mesa
                   </Button>
                 </Link>

@@ -12,7 +12,7 @@ export default function Page() {
         className="mb-20"
         subtitle="Celebrações"
         title="Eventos"
-        description="Momentos únicos merecem celebrações inesquecíveis. Casamentos, batizados, aniversários ou jantares de empresa - criamos o ambiente perfeito para cada ocasião."
+        description="O ambiente perfeito para casamentos, batizados e eventos corporativos."
       />
 
       <div className="grid gap-y-12 sm:gap-x-12 md:grid-cols-2 lg:gap-x-16">

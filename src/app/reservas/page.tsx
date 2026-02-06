@@ -204,11 +204,13 @@ export default function Page() {
                                 </SelectTrigger>
                                 <SelectContent>
                                   {times.length > 0 ? (
-                                    times.map((value: string, index: number) => (
-                                      <SelectItem key={index} value={value}>
-                                        {value}
-                                      </SelectItem>
-                                    ))
+                                    times.map(
+                                      (value: string, index: number) => (
+                                        <SelectItem key={index} value={value}>
+                                          {value}
+                                        </SelectItem>
+                                      )
+                                    )
                                   ) : (
                                     <div className="p-4 text-sm text-secondary/50 text-center">
                                       Selecione uma data primeiro
@@ -250,14 +252,15 @@ export default function Page() {
                                 </SelectTrigger>
                                 <SelectContent>
                                   {Array.from(
-                                    { length: 12 },
+                                    { length: 6 },
                                     (_, i) => i + 1
                                   ).map((number) => (
                                     <SelectItem
                                       key={number}
                                       value={number.toString()}
                                     >
-                                      {number} {number === 1 ? "Pessoa" : "Pessoas"}
+                                      {number}{" "}
+                                      {number === 1 ? "Pessoa" : "Pessoas"}
                                     </SelectItem>
                                   ))}
                                 </SelectContent>
