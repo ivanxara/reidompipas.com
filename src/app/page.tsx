@@ -45,7 +45,7 @@ export default function Home() {
           breadcrumbList([{ name: "Início", item: "https://reidompipas.com/" }])
         )}
       </Script>
-      <Confetti />
+      {/* <Confetti /> */}
 
       <div className="py-16">
         {/* Hero Section - Clean Editorial Style */}
