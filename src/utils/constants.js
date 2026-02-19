@@ -62,13 +62,13 @@ export const FAQ_GLOBAL = [
 ];
 
 export const EVENTS = [
-  {
-    label: "Menu Carnaval",
-    subLabel:
-      "A folia chega à mesa! Junte-se a nós dia 16 de Fevereiro para uma noite vibrante com sabores irresistíveis, animação contagiante e DJ ao vivo. A festa é garantida! 🎭🔥",
-    image: ImageMenuCarnaval,
-    to: "/eventos/carnaval",
-  },
+  // {
+  //   label: "Menu Carnaval",
+  //   subLabel:
+  //     "A folia chega à mesa! Junte-se a nós dia 16 de Fevereiro para uma noite vibrante com sabores irresistíveis, animação contagiante e DJ ao vivo. A festa é garantida! 🎭🔥",
+  //   image: ImageMenuCarnaval,
+  //   to: "/eventos/carnaval",
+  // },
   {
     label: "Menu Dia da Mulher",
     subLabel:

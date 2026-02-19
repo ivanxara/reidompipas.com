@@ -18,14 +18,14 @@ export default function FloatingWhatsapp() {
   const link = `${WHATSAPP}&text=Olá! Vim através do site e preciso de uma informação.`;
 
   const buttons = [
-    {
-      id: "carnaval",
-      href: "/eventos/carnaval",
-      icon: CarnavalMask,
-      color: "bg-[#E6C84F]",
-      label: "Menu Carnaval",
-      delay: 0.1,
-    },
+    // {
+    //   id: "carnaval",
+    //   href: "/eventos/carnaval",
+    //   icon: CarnavalMask,
+    //   color: "bg-[#E6C84F]",
+    //   label: "Menu Carnaval",
+    //   delay: 0.1,
+    // },
     {
       id: "whatsapp",
       href: link,

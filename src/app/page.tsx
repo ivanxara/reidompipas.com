@@ -124,13 +124,13 @@ export default function Home() {
                     Em Breve:
                   </span>
                   <div className="flex gap-4 overflow-hidden">
-                    <Link
+                    {/* <Link
                       href="/eventos"
                       className="group flex items-center gap-2 text-sm text-secondary/70 hover:text-primary transition-colors cursor-pointer"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors"></span>
                       <span className="font-medium">Carnaval</span>
-                    </Link>
+                    </Link> */}
                     <Link
                       href="/eventos"
                       className="group flex items-center gap-2 text-sm text-secondary/70 hover:text-primary transition-colors cursor-pointer"
