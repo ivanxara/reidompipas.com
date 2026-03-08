@@ -69,13 +69,13 @@ export const EVENTS = [
   //   image: ImageMenuCarnaval,
   //   to: "/eventos/carnaval",
   // },
-  {
-    label: "Menu Dia da Mulher",
-    subLabel:
-      "Uma homenagem à elegância e à força feminina. Dia 7 de Março, desfrute de um jantar exclusivo com ambiente sofisticado e música ao vivo. Uma noite para celebrar! 🌸✨",
-    image: ImageMenuDiaDaMulher,
-    to: "/eventos/dia-das-mulheres",
-  },
+  // {
+  //   label: "Menu Dia da Mulher",
+  //   subLabel:
+  //     "Uma homenagem à elegância e à força feminina. Dia 7 de Março, desfrute de um jantar exclusivo com ambiente sofisticado e música ao vivo. Uma noite para celebrar! 🌸✨",
+  //   image: ImageMenuDiaDaMulher,
+  //   to: "/eventos/dia-das-mulheres",
+  // },
   {
     label: "Grupos & Empresas",
     subLabel:
