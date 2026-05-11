@@ -40,9 +40,15 @@ export default function Home() {
 
   return (
     <>
-      <Script id="ldjson-breadcrumb-home" type="application/ld+json" strategy="beforeInteractive">
+      <Script
+        id="ldjson-breadcrumb-home"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+      >
         {JSON.stringify(
-          breadcrumbList([{ name: "Início", item: "https://reidompipas.com/" }])
+          breadcrumbList([
+            { name: "Início", item: "https://reidompipas.com/" },
+          ]),
         )}
       </Script>
       {/* <Confetti /> */}
@@ -327,13 +333,25 @@ export default function Home() {
 
                 <div className="flex flex-col sm:flex-row items-center gap-8 md:gap-16">
                   {[
-                    { name: "Uber Eats", image: ImageUberEats },
-                    { name: "Glovo", image: ImageGlovo },
-                    { name: "Bolt Food", image: ImageBoltFood },
+                    {
+                      name: "Uber Eats",
+                      image: ImageUberEats,
+                      url: "https://www.ubereats.com/pt/store/rei-dom-pipas/RyS4gldjXMq3H-41JWjpWg",
+                    },
+                    {
+                      name: "Glovo",
+                      image: ImageGlovo,
+                      url: "https://glovoapp.com/pt/pt/sao-joao-da-madeira/stores/rei-dom-pipas-oaz",
+                    },
+                    {
+                      name: "Bolt Food",
+                      image: ImageBoltFood,
+                      url: "https://food.bolt.eu/pt-pt/1434-santa%20maria%20da%20feira/p/193776-rei-dom-pipas/",
+                    },
                   ].map((partner, index, arr) => (
                     <React.Fragment key={partner.name}>
                       <a
-                        href="#"
+                        href={partner.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
