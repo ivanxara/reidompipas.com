@@ -10,6 +10,11 @@ import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import {
+  ANNOUNCEMENT_HEIGHT_CLASS,
+  ANNOUNCEMENT_TOP_OFFSET_CLASS,
+  useAnnouncement,
+} from "@/hooks/use-announcement";
 
 const routes = [
   { name: "Inicio", url: "/" },
@@ -22,6 +27,7 @@ const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const pathname = usePathname();
+  const { visible: announcementVisible } = useAnnouncement();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,9 +51,12 @@ const Navbar: React.FC = () => {
 
   return (
     <>
+      {announcementVisible && <div className={ANNOUNCEMENT_HEIGHT_CLASS} />}
+
       <header
         className={cn(
-          "fixed top-0 left-0 w-full z-50 transition-all duration-300",
+          "fixed left-0 w-full z-50 transition-all duration-300",
+          announcementVisible ? ANNOUNCEMENT_TOP_OFFSET_CLASS : "top-0",
           scrolled || open || pathname !== "/"
             ? "bg-background/95 backdrop-blur-md shadow-sm py-4"
             : "bg-transparent py-6"

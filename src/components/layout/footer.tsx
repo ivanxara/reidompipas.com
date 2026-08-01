@@ -119,6 +119,15 @@ export default function Footer() {
                     </span>
                     <span>19:30 - 23:00</span>
                   </div>
+                  <div>
+                    <span className="block font-medium text-secondary">
+                      Horário especial de agosto
+                    </span>
+                    <span>
+                      De 3 a 15 de agosto, também abrimos ao jantar todos os
+                      dias
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
