@@ -1,24 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
 
-const STORAGE_KEY = "rdp-announcement-agosto-2026-dismissed";
 const EVENT_NAME = "rdp-announcement-change";
 
+let dismissed = false;
+
 export function useAnnouncement() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(!dismissed);
 
   useEffect(() => {
-    setVisible(localStorage.getItem(STORAGE_KEY) !== "1");
-
-    const onChange = () => {
-      setVisible(localStorage.getItem(STORAGE_KEY) !== "1");
-    };
-
+    const onChange = () => setVisible(!dismissed);
     window.addEventListener(EVENT_NAME, onChange);
     return () => window.removeEventListener(EVENT_NAME, onChange);
   }, []);
 
   const dismiss = useCallback(() => {
-    localStorage.setItem(STORAGE_KEY, "1");
+    dismissed = true;
     window.dispatchEvent(new Event(EVENT_NAME));
   }, []);
 

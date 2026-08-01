@@ -3,7 +3,10 @@
 import { Clock, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Wrapper from "./wrapper";
-import { ANNOUNCEMENT_HEIGHT_CLASS, useAnnouncement } from "@/hooks/use-announcement";
+import {
+  ANNOUNCEMENT_HEIGHT_CLASS,
+  useAnnouncement,
+} from "@/hooks/use-announcement";
 
 export default function AnnouncementBar() {
   const { visible, dismiss } = useAnnouncement();
@@ -14,18 +17,14 @@ export default function AnnouncementBar() {
     <div
       className={cn(
         "fixed top-0 left-0 w-full z-[60] bg-primary text-secondary",
-        ANNOUNCEMENT_HEIGHT_CLASS
+        ANNOUNCEMENT_HEIGHT_CLASS,
       )}
     >
       <Wrapper className="h-full flex items-center justify-center relative">
-        <div className="flex items-center gap-2 px-8 text-center text-[11px] sm:text-sm font-medium tracking-wide truncate">
+        <div className="flex items-center gap-2 px-8 text-center text-sm font-medium tracking-wide truncate">
           <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-          <span className="sm:hidden">
-            Também ao jantar todos os dias: 3 a 15 de agosto
-          </span>
-          <span className="hidden sm:inline">
-            Horário especial: também abrimos ao jantar todos os dias, de 3 a
-            15 de agosto
+          <span>
+            Também abertos ao jantar todos os dias, de 3 a 15 de agosto
           </span>
         </div>
         <button
