@@ -121,11 +121,11 @@ export default function Footer() {
                   </div>
                   <div>
                     <span className="block font-medium text-secondary">
-                      Horário especial de agosto
+                      Horário especial
                     </span>
                     <span>
-                      De 3 a 15 de agosto, também abrimos ao jantar todos os
-                      dias
+                      Estamos fechados até dia 6 de setembro. Reabrimos dia 7 de
+                      setembro.
                     </span>
                   </div>
                 </div>

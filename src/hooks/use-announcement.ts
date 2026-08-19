@@ -21,5 +21,7 @@ export function useAnnouncement() {
   return { visible, dismiss };
 }
 
-export const ANNOUNCEMENT_HEIGHT_CLASS = "h-9 sm:h-10";
-export const ANNOUNCEMENT_TOP_OFFSET_CLASS = "top-9 sm:top-10";
+// On mobile the message can wrap to multiple lines. Keep this in sync with the
+// navbar offset so the fixed navigation never overlaps the announcement.
+export const ANNOUNCEMENT_HEIGHT_CLASS = "h-16 sm:h-10";
+export const ANNOUNCEMENT_TOP_OFFSET_CLASS = "top-16 sm:top-10";
