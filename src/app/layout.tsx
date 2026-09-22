@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
-import AnnouncementBar from "@/components/layout/announcement-bar";
 import Footer from "@/components/layout/footer";
 import { cn } from "@/lib/utils";
 import { fonts } from "@/assets/fonts/fonts";
@@ -89,7 +88,6 @@ export default function RootLayout({
               sameAs: ["https://www.instagram.com/reidompipas"],
             })}
           </Script>
-          <AnnouncementBar />
           <Navbar />
           <FloatingWhatsapp />
           {children}

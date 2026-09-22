@@ -119,15 +119,6 @@ export default function Footer() {
                     </span>
                     <span>19:30 - 23:00</span>
                   </div>
-                  <div>
-                    <span className="block font-medium text-secondary">
-                      Horário especial
-                    </span>
-                    <span>
-                      Estamos fechados até dia 6 de setembro. Reabrimos dia 7 de
-                      setembro.
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>
